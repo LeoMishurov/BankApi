@@ -179,7 +179,7 @@ namespace BankApi.Repositories
                 //сохранение транзакции в бд
                 repositoryTransaction.TransactionsPay(userId,sum,cardNumber);
 
-                return "оплата прошла успешно";
+                return null;
             }
           
         }

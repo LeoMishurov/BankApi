@@ -70,7 +70,11 @@ namespace BankApi.Controllers
             //достает id пользоввателя из токина
             var UserId = User.Identity.GetId();
 
-            return repositoryCard.Pay(UserId, sum, cardNumber);
+            var error = repositoryCard.Pay(UserId, sum, cardNumber);
+            if (string.IsNullOrEmpty(error))
+                return Ok();
+            else
+                return BadRequest(error);
         }
 
         [HttpPost("translation")]

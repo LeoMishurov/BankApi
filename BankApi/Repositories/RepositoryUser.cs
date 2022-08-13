@@ -16,9 +16,9 @@ namespace BankApi.Repositories
         /// </summary>
         /// <param name="login"></param>
         /// <param name="parol"></param>
-        public void AddUser(string login, string parol) 
+        public void AddUser(string login, string password) 
         { 
-            User user = new User { Login=login, Parol=parol};
+            User user = new User { Login=login, Password = password };
 
             myContext.User.Add(user);
 
@@ -30,9 +30,9 @@ namespace BankApi.Repositories
         /// <param name="login"></param>
         /// <param name="parol"></param>
         /// <returns></returns>
-        public User GetUser(string login, string parol) 
+        public User GetUser(string login, string password) 
         {
-            var user = myContext.User.FirstOrDefault(x => x.Login==login && x.Parol==parol);
+            var user = myContext.User.FirstOrDefault(x => x.Login==login && x.Password == password);
             return user;
         }
 

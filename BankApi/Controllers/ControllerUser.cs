@@ -74,12 +74,12 @@ namespace BankApi.Controllers
         }
 
         [HttpPost("Add")]
-        public ActionResult UserAdd(string login, string parol) 
+        public ActionResult UserAdd(string login, string password) 
         { 
             var user = repositoryUser.PersonExist(login);
             if (user)
                 return BadRequest("пользователь с таким именем уже существует");
-            repositoryUser.AddUser(login, parol);
+            repositoryUser.AddUser(login, password);
             return Ok();
         }
     }

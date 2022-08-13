@@ -4,7 +4,7 @@
     {
        public Guid Id { get; set; }
        public string Login { get; set; }
-       public string Parol { get; set; }
+       public string Password { get; set; }
 
         //Сылка на Card для enti framevork
         public List<Card> Cards { get; set; }
