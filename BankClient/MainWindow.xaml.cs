@@ -37,8 +37,8 @@ namespace BankClient
         private async void btnRegistr_Click(object sender, RoutedEventArgs e)
         {
 
-            await repository.Registration(tbLogin.Text, tbPassword.Text);
-            await repository.Authorization(tbLogin.Text, tbPassword.Text);
+            await repository.Registration(uc1.tbLogin.Text, uc1.tbPassword.Text);
+            await repository.Authorization(uc1.tbLogin.Text, uc1.tbPassword.Text);
             Grid1.Children.Remove(uc1);
             //await repository.Registration(tbLogin.Text, tbPassword.Text);
         }
@@ -49,8 +49,8 @@ namespace BankClient
         /// <param name="e"></param>
         private async void btnAuthorization_Click(object sender, RoutedEventArgs e)
         {
-          await repository.Authorization(tbLogin.Text, tbPassword.Text);
-            Grid1.Children.Remove(Grid2);
+          await repository.Authorization(uc1.tbLogin.Text, uc1.tbPassword.Text);
+            Grid1.Children.Remove(uc1.Grid2);
         }
     }
 }
