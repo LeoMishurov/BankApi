@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BankClient.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,6 +26,7 @@ namespace BankClient
             InitializeComponent();
         }
         Repository repository = new();
+
         /// <summary>
         /// регистрация
         /// </summary>
@@ -33,10 +35,9 @@ namespace BankClient
         // обращаться к асинхронному методу мы можем из асинхронного метода
         private async void btnRegistr_Click(object sender, RoutedEventArgs e)
         {
-
-            await repository.Registration(tbLogin.Text, tbPassword.Text);
-            await repository.Authorization(tbLogin.Text, tbPassword.Text);
-            //await repository.Registration(tbLogin.Text, tbPassword.Text);
+            UserControl2 userControl2 = new();
+            WindowManeger.ShowWindow(userControl2);
+                     
         }
         /// <summary>
         /// авторизация
@@ -45,7 +46,18 @@ namespace BankClient
         /// <param name="e"></param>
         private async void btnAuthorization_Click(object sender, RoutedEventArgs e)
         {
-            await repository.Authorization(tbLogin.Text, tbPassword.Text);
+            var isAuthorization = await repository.Authorization(tbLogin.Text, tbPassword.Text);
+
+            //записываем login в класс с глобальными переменными
+            
+            GlobalVar.Login = tbLogin.Text;
+            
+            if (isAuthorization)
+            {
+                WindowManeger.ClouseWindow();               
+            }
+            else 
+                lbError.Content = "не верный логин или пароль";
         }
     }
 }

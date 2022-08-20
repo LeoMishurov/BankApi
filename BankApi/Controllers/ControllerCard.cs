@@ -46,13 +46,13 @@ namespace BankApi.Controllers
             return repositoryCard.BlockCard(cardNumber, UserId);
         }
 
-        [HttpPost("UnBock")]
-        public ActionResult<String> UnBockCard(string cardNumber)
+        [HttpPost("UnBlock")]
+        public ActionResult<String> UnBlockCard(string cardNumber)
         {
             //достает id пользоввателя из токина
             var UserId = User.Identity.GetId();
 
-            return repositoryCard.UnBockCard(cardNumber, UserId);
+            return repositoryCard.UnBlockCard(cardNumber, UserId);
         }
 
         [HttpPost("DailyLimit")]

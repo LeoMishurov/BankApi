@@ -102,7 +102,7 @@ namespace BankApi.Repositories
         /// <param name="cardNumber"></param>
         /// <param name="userId"></param>
         /// <returns></returns>
-        public String UnBockCard(string cardNumber, Guid userId)
+        public String UnBlockCard(string cardNumber, Guid userId)
         {
             var Card = myContext.Card.FirstOrDefault(x => x.CardNumber == cardNumber && x.UserID == userId);
             if (Card != null && Card.IsActive == false)
