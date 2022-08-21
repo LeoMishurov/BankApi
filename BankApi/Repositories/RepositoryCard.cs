@@ -1,5 +1,6 @@
 ﻿using BankApi.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Linq;
 
 namespace BankApi.Repositories
 {
@@ -225,8 +226,19 @@ namespace BankApi.Repositories
                 //сохранение транзакции в бд
                 repositoryTransaction.TransactionsReceipts(userId, sum,inCardNumber);
 
-                return "перевод выполнен успешно";
+                return null;
             }
+        }
+        /// <summary>
+        /// возвращает все карты пользователя
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
+        public List<CardDTO>ReturnCards(Guid userId) 
+        {                 
+            return myContext.Card.Where(x => x.UserID == userId)
+                .Select(x=> CardDTO.FromCard(x))
+                .ToList();
         }
     }
 }

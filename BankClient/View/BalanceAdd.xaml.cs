@@ -40,13 +40,13 @@ namespace BankClient
             {
                 
                 lbInformation.Content = $"баланс карты {tbCardNumber.Text} попполнен на {tbSum.Text}";
-
+                WindowManeger.ReturnCards();
                 tbCardNumber.Clear();
                 tbSum.Clear();
             }
             else
             {
-                lbInformation.Content = "Произошла ошибка. Проверьте номер карты";               
+                lbInformation.Content = "Произошла ошибка. Проверьте введенные данные";               
             }
           
         }

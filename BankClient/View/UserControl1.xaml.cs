@@ -24,6 +24,7 @@ namespace BankClient
         public UserControl1()
         {
             InitializeComponent();
+           
         }
         Repository repository = new();
 
@@ -46,14 +47,19 @@ namespace BankClient
         /// <param name="e"></param>
         private async void btnAuthorization_Click(object sender, RoutedEventArgs e)
         {
+
+            
+
             var isAuthorization = await repository.Authorization(tbLogin.Text, tbPassword.Text);
 
             //записываем login в класс с глобальными переменными
             
             GlobalVar.Login = tbLogin.Text;
             
+
             if (isAuthorization)
-            {
+            {            
+                WindowManeger.ReturnCards();
                 WindowManeger.ClouseWindow();               
             }
             else 

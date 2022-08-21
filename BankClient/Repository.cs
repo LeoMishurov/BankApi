@@ -96,6 +96,28 @@ namespace BankClient
         }
 
         /// <summary>
+        /// оплата
+        /// </summary>
+        /// <param name="sum"></param>
+        /// <param name="cardNumber"></param>
+        /// <returns></returns>
+        public async Task<Result> Pay(string sum, string cardNumber)
+        {
+            return await CallPostLight($"api/Card/Pay?cardNumber={cardNumber}&sum={sum}");
+        }
+
+        /// <summary>
+        /// перевод по номеру карты
+        /// </summary>
+        /// <param name="sum"></param>
+        /// <param name="cardNumber"></param>
+        /// <returns></returns>
+        public async Task<Result> Remittance(string sum, string fromCardNumber, string inCardNumber)
+        {
+            return await CallPostLight($"api/Card/Remittance?sum={sum}&fromCardNumber={fromCardNumber}&inCardNumber={inCardNumber}");
+        }
+
+        /// <summary>
         /// Установка дневного лимита
         /// </summary>
         /// <param name="sum"></param>
@@ -113,6 +135,15 @@ namespace BankClient
         public async Task<Result<CardDTO>> CardAdd()
         {
             return await CallPost<CardDTO>("api/Card/Save");
+        }
+
+        /// <summary>
+        /// возвращает все карты польователя
+        /// </summary>
+        /// <returns></returns>
+        public async Task<Result<List<CardDTO>>> ReturnCards()
+        {
+            return await CallPost<List<CardDTO>>("api/Card/ReturnCards");
         }
 
         /// <summary>
@@ -150,6 +181,22 @@ namespace BankClient
             if (response.IsSuccessStatusCode)
                 return Result.Ok(await response.Content.ReadFromJsonAsync<T>());
             return Result.Fail<T>(await response.Content.ReadAsStringAsync());
+        }
+
+        /// <summary>
+        /// обработка ошибок при завпросе в api
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="url"></param>
+        /// <returns></returns>
+        private async Task<Result> CallPostLight(string url)
+        {
+            /// using закрывает поток после выполнения задачи
+            using var client = GetClient();
+            var response = await client.PostAsync(url, null);
+            if (response.IsSuccessStatusCode)
+                return Result.Ok();
+            return Result.Fail(await response.Content.ReadAsStringAsync());
         }
     }
 }

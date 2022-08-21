@@ -35,10 +35,11 @@ namespace BankClient
             if (result.IsSuccess)
             {               
                 lbInformation.Content = $"лимит карты {tbCardNumber.Text} установлен на {tbSum.Text}";
+                WindowManeger.ReturnCards();
             }
             else
             {
-                lbInformation.Content = "Произошла ошибка. Проверьте номер карты"; ;
+                lbInformation.Content = "Произошла ошибка. Проверьте введенные данные"; ;
             }
         }
 

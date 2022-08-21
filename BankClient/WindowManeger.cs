@@ -29,5 +29,13 @@ namespace BankClient
         {
             mainWindow.ShowWindow(control);
         }
+
+        /// <summary>
+        /// загрузка списка карт пользователя в lbCards
+        /// </summary>
+        public static void ReturnCards() 
+        {
+            mainWindow.ReturnCards();
+        }
     }
 }

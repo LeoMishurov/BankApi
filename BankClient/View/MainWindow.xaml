@@ -39,13 +39,52 @@
             <Button x:Name="btnBalanceAdd" Content="пополнить баланс" FontSize="15" Width="150" Background="Yellow" FontWeight="Bold" Click="btnBalanceAdd_Click"/>
             <Button x:Name="btnBlock" Content="блок/разблок" FontSize="15" Width="150" Background="Yellow" FontWeight="Bold" Click="btnBlock_Click"/>
             <Button x:Name="DailyLimit" Content="дневной лимит" FontSize="15" Width="150" Background="Yellow" FontWeight="Bold" Click="DailyLimit_Click"/>
-            <Button Content="оплата" FontSize="15" Width="150" Background="Yellow" FontWeight="Bold"/>
-            <Button Content="перевод" FontSize="15" Width="150" Background="Yellow" FontWeight="Bold"/>
+            <Button x:Name="Pay" Content="оплата" FontSize="15" Width="150" Background="Yellow" FontWeight="Bold" Click="Pay_Click"/>
+            <Button x:Name="Remittance" Content="перевод" FontSize="15" Width="150" Background="Yellow" FontWeight="Bold" Click="Remittance_Click"/>
         </StackPanel>
         <Grid Grid.Row="1" x:Name="Grid0"  Background="#FF330644">
-            <Label Content="ваши карты" HorizontalAlignment="Left" Margin="115,169,0,0" 
+            <Label Content="ваши карты" HorizontalAlignment="Left" Margin="115,162,0,0" 
                    VerticalAlignment="Top" Width="138" FontSize="20" FontWeight="Bold" Foreground="DarkGray"/>
-            <ListBox d:ItemsSource="{d:SampleData ItemCount=5}" Margin="37,226,573,25"/>
+
+            <ListBox x:Name="lbCards"  Margin="37,206,573,10"  ScrollViewer.CanContentScroll="True">
+
+                
+                        <ListBox.ItemTemplate>
+                  
+                    <DataTemplate>
+                        
+                        <StackPanel Orientation="Vertical">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="номер карты       " FontWeight="Bold" FontSize="14" Foreground="Blue"/>
+                                <TextBox Text="{Binding CardNumber }" FontWeight="Bold" IsReadOnly="True"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="баланс" FontWeight="Bold" FontSize="14" Width="120"/>
+                                <TextBlock Text="{Binding Balance  }" FontWeight="Bold" Width="130" TextAlignment="Center"   />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="дневной лимит     " FontWeight="Bold" FontSize="14" Width="120"/>
+                                <TextBlock Text="{Binding DailyLimit  }" FontWeight="Bold" Width="130" TextAlignment="Center"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="срок действия        " FontWeight="Bold" FontSize="14" Width="120"/>
+                                <TextBlock Text="{Binding ExpirationCard  }" FontWeight="Bold" Width="130" TextAlignment="Center"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="активность        " FontWeight="Bold" FontSize="14" Width="120"/>
+                                <TextBlock Text="{Binding IsActive  }" FontWeight="Bold" Width="130" TextAlignment="Center"/>
+                            </StackPanel>
+                            
+
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox> 
+                     
+                     
+
+            
+
             <Image HorizontalAlignment="Left" Height="100" Margin="132,23,0,0" 
                    VerticalAlignment="Top" Width="100" Source="/User.png"/>
             <Label x:Name="lbUser" Content="ваши карты" HorizontalAlignment="Left" Margin="37,129,0,0" 

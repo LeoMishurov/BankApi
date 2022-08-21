@@ -1,6 +1,9 @@
 ﻿using BankClient.Model;
+using Microsoft.VisualBasic;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,15 +25,49 @@ namespace BankClient
     public partial class MainWindow : Window
     {
         UserControl1 input = new();
+
+        private ListItems listItems = new();
         public MainWindow()
         {
             InitializeComponent();
+
+            lbCards.ItemsSource = listItems.Cards;// привязка данных
 
             WindowManeger.mainWindow = this;
             Grid1.Children.Add(input);
             
         }
         Repository repository = new();
+
+        
+        private class ListItems
+        {
+            // ObservableCollection - автоммтически создает событие и обновляет
+            // коллекцию item после удаления или добавления элимента
+            public ObservableCollection<CardDTO> Cards { get; set; } = new();
+           
+        }
+        /// <summary>
+        /// загрузка списка карт пользователя в lbCards
+        /// </summary>
+        public async void ReturnCards() 
+        {
+           
+            var result = await repository.ReturnCards();
+
+
+            if (result.IsSuccess)
+            {
+                listItems.Cards.Clear();
+
+                foreach (CardDTO cardDTO in result.Value) 
+                {
+                    listItems.Cards.Add(cardDTO);
+                }
+               
+            }
+            
+        }
 
         /// <summary>
         /// закрывает окно
@@ -94,6 +131,27 @@ namespace BankClient
         {
             DailyLimit dailyLimit = new();
             ShowWindow(dailyLimit);
+        }
+
+        /// <summary>
+        /// запускает окно оплаты
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Pay_Click(object sender, RoutedEventArgs e)
+        {
+            Pay pay = new();
+            ShowWindow(pay);
+        }
+        /// <summary>
+        /// запускает окно перевода по номеру карты
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Remittance_Click(object sender, RoutedEventArgs e)
+        {
+            Remittance remittance = new();
+            ShowWindow(remittance);
         }
     }
 }
