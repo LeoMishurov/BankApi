@@ -35,12 +35,12 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal" Grid.Row="0">
-            <Button x:Name="btnCardAdd" Content="выпустить карту" FontSize="15" Width="150" Background="Yellow" FontWeight="Bold" Click="btnCardAdd_Click"/>
-            <Button x:Name="btnBalanceAdd" Content="пополнить баланс" FontSize="15" Width="150" Background="Yellow" FontWeight="Bold" Click="btnBalanceAdd_Click"/>
-            <Button x:Name="btnBlock" Content="блок/разблок" FontSize="15" Width="150" Background="Yellow" FontWeight="Bold" Click="btnBlock_Click"/>
-            <Button x:Name="DailyLimit" Content="дневной лимит" FontSize="15" Width="150" Background="Yellow" FontWeight="Bold" Click="DailyLimit_Click"/>
-            <Button x:Name="Pay" Content="оплата" FontSize="15" Width="150" Background="Yellow" FontWeight="Bold" Click="Pay_Click"/>
-            <Button x:Name="Remittance" Content="перевод" FontSize="15" Width="150" Background="Yellow" FontWeight="Bold" Click="Remittance_Click"/>
+            <Button x:Name="btnCardAdd" Content="выпустить карту" FontSize="15" Width="150" Background="Yellow" FontWeight="Bold" Click="btnCardAdd_Click" IsEnabled="False"/>
+            <Button x:Name="btnBalanceAdd" Content="пополнить баланс" FontSize="15" Width="150" Background="Yellow" FontWeight="Bold" Click="btnBalanceAdd_Click" IsEnabled="False"/>
+            <Button x:Name="btnBlock" Content="блок/разблок" FontSize="15" Width="150" Background="Yellow" FontWeight="Bold" Click="btnBlock_Click" IsEnabled="False"/>
+            <Button x:Name="DailyLimit" Content="дневной лимит" FontSize="15" Width="150" Background="Yellow" FontWeight="Bold" Click="DailyLimit_Click" IsEnabled="False"/>
+            <Button x:Name="Pay" Content="оплата" FontSize="15" Width="150" Background="Yellow" FontWeight="Bold" Click="Pay_Click" IsEnabled="False"/>
+            <Button x:Name="Remittance" Content="перевод" FontSize="15" Width="150" Background="Yellow" FontWeight="Bold" Click="Remittance_Click" IsEnabled="False"/>
         </StackPanel>
         <Grid Grid.Row="1" x:Name="Grid0"  Background="#FF330644">
             <Label Content="ваши карты" HorizontalAlignment="Left" Margin="115,162,0,0" 

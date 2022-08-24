@@ -270,7 +270,7 @@
                    FontSize="36" FontWeight="Bold" Margin="0,139,0,0" Foreground="DarkGray"/>
         <Label x:Name="lbError" Content="" HorizontalAlignment="Center" VerticalAlignment="Top" 
             HorizontalContentAlignment="Center" VerticalContentAlignment="Stretch" 
-            FontSize="30" FontWeight="Bold" Foreground="Yellow" Width="649" Margin="0,1,0,0"/>
+            FontSize="16" FontWeight="Bold" Foreground="DarkGray" Width="649" Margin="0,7,0,0"/>
 
 
 

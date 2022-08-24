@@ -5,8 +5,10 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using BankClient.Model;
+using Microsoft.VisualBasic;
 using Newtonsoft.Json;
 
 namespace BankClient
@@ -197,6 +199,48 @@ namespace BankClient
             if (response.IsSuccessStatusCode)
                 return Result.Ok();
             return Result.Fail(await response.Content.ReadAsStringAsync());
+        }
+        /// <summary>
+        /// проверка на введенное количество символов и на то чтобы введенное было число
+        /// </summary>
+        /// <param name="cardNumber"></param>
+        /// <returns></returns>
+        public bool ErrorChecking(string cardNumber)
+        {
+            cardNumber = cardNumber.Replace(" ", "");
+
+            //провера на введенное количество символов и на то чтобы введенное было число
+            bool isInt = cardNumber.All(x => char.IsDigit(x));
+
+            if (cardNumber.Length == 16 && isInt)
+            {
+                return true;
+            }
+            return false;
+        }
+        /// <summary>
+        /// проверка что в поле суммы ввведено число
+        /// </summary>
+        /// <param name="cardNumber"></param>
+        /// <returns></returns>
+        public bool SumChecking(string sum) 
+        {
+            bool isInt = sum.All(x => char.IsDigit(x));
+            return isInt;
+        }
+        /// <summary>
+        /// добовляет пробелы "если нужно" если номер карты введен слитно
+        /// </summary>
+        /// <param name="cardNumber"></param>
+        /// <returns></returns>
+        public string AddSpace(string cardNumber) 
+        {
+            if (cardNumber.Length == 16)
+            {
+                string res = Regex.Replace(cardNumber, ".{4}", "$0 ").Trim();
+                return res;
+            }
+            else return cardNumber;
         }
     }
 }

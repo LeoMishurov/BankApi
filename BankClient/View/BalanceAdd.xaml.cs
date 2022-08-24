@@ -34,8 +34,14 @@ namespace BankClient
         /// <param name="e"></param>
         private async void btnBalanseAdd_Click(object sender, RoutedEventArgs e)
         {
+            //проверка на введенное количество символов и на то чтобы введенное было число
+            if (!repository.ErrorChecking(tbCardNumber.Text) || !repository.SumChecking(tbSum.Text))
+            {
+                lbInformation.Content = "Произошла ошибка. Проверьте введенные данные";
+                return;
+            }
 
-            var result = await repository.BalanceAdd(tbSum.Text, tbCardNumber.Text);
+            var result = await repository.BalanceAdd(tbSum.Text, repository.AddSpace(tbCardNumber.Text));
             if (result.IsSuccess)
             {
                 

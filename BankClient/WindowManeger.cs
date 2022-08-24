@@ -37,5 +37,13 @@ namespace BankClient
         {
             mainWindow.ReturnCards();
         }
+
+        /// <summary>
+        /// разблокировка кнопок после авторизации
+        /// </summary>
+        public static void UnlockButtons() 
+        {
+            mainWindow.UnlockButtons();
+        }
     }
 }

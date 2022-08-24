@@ -34,18 +34,15 @@ namespace BankClient
         /// <param name="e"></param>
         private async void Remittance_Click(object sender, RoutedEventArgs e)
         {
-            //провера на введенное количество символов и на то чтобы введенное было число
-            //int resFrom;
-            //int resIN;
-            //bool fromInt = Int32.TryParse(tbFromCardNumber.Text, out resFrom);
-            //bool inInt = Int32.TryParse(tbInCardNumber.Text, out resIN);
-
-            if (tbFromCardNumber.Text.Length != 19 || tbInCardNumber.Text.Length != 19 /*|| !inInt || !fromInt*/)
+            //проверка на введенное количество символов и на то чтобы введенное было число
+            if (!repository.ErrorChecking(tbFromCardNumber.Text) || !repository.ErrorChecking(tbInCardNumber.Text)  
+                || !repository.SumChecking(tbSum.Text))
             {
                 lbInformation.Content = "Произошла ошибка. Проверьте введенные данные";
                 return;
-            }          
-                var result = await repository.Remittance(tbSum.Text, tbFromCardNumber.Text, tbInCardNumber.Text);
+            }
+            var result = await repository.Remittance(tbSum.Text,repository.AddSpace(tbFromCardNumber.Text), 
+                repository.AddSpace(tbInCardNumber.Text));
 
                 if (result.IsSuccess)
                 {

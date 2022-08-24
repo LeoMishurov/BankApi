@@ -47,9 +47,7 @@ namespace BankClient
         /// <param name="e"></param>
         private async void btnAuthorization_Click(object sender, RoutedEventArgs e)
         {
-
-            
-
+           
             var isAuthorization = await repository.Authorization(tbLogin.Text, tbPassword.Text);
 
             //записываем login в класс с глобальными переменными
@@ -60,6 +58,7 @@ namespace BankClient
             if (isAuthorization)
             {            
                 WindowManeger.ReturnCards();
+                WindowManeger.UnlockButtons();
                 WindowManeger.ClouseWindow();               
             }
             else 

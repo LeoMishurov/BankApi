@@ -212,7 +212,7 @@
                 Foreground="DarkGray"
                 Margin="450,343,137,0" 
                 Height="52" 
-                FontSize="30" 
+                FontSize="20" 
                 VerticalAlignment="Top"
                 FontWeight="Bold"
                 Background="#FF330644"
@@ -223,11 +223,11 @@
         <Label Content="сумма перевода" x:Name="lbSum" 
             HorizontalAlignment="Left" VerticalAlignment="Top" 
             HorizontalContentAlignment="Center" VerticalContentAlignment="Stretch" 
-            FontSize="30" FontWeight="Bold" Margin="408,15,0,0" Foreground="DarkGray" Width="410" Height="58"/>
+            FontSize="20" FontWeight="Bold" Margin="518,19,0,0" Foreground="DarkGray" Width="174" Height="38"/>
         <Label Content="номер карты отправителя" x:Name="lbCardNumber" 
             HorizontalAlignment="Left" VerticalAlignment="Top" 
             HorizontalContentAlignment="Center" VerticalContentAlignment="Stretch" 
-            FontSize="30" FontWeight="Bold" Margin="373,124,0,0" Foreground="DarkGray" Width="483" RenderTransformOrigin="0.505,0.539"/>
+            FontSize="20" FontWeight="Bold" Margin="456,128,0,0" Foreground="DarkGray" Width="301" RenderTransformOrigin="0.505,0.539"/>
         <TextBox Style="{DynamicResource TextBoxStyle2}" 
             x:Name="tbFromCardNumber" 
             Margin="445,178,133,224" FontSize="30" 
@@ -258,20 +258,18 @@
             FontSize="16" FontWeight="Bold" Margin="340,397,0,0" Foreground="DarkGray" Width="531" RenderTransformOrigin="0.51,0.601"/>
         <TextBox Style="{DynamicResource TextBoxStyle2}" 
             x:Name="tbInCardNumber" 
-            Margin="446,279,132,123" FontSize="30" 
+            Margin="469,290,156,129" FontSize="20" 
             FontWeight="Bold" 
             SelectionOpacity="1"
             BorderBrush="{x:Null}" 
-            Foreground="DarkGray"                               
-            Width="323" 
-            Height="49"   
+            Foreground="DarkGray"   
             HorizontalContentAlignment="Center" 
                 
                  />
         <Label Content="номер карты получателя" x:Name="lbCardNumber_Copy" 
             HorizontalAlignment="Left" VerticalAlignment="Top" 
             HorizontalContentAlignment="Center" VerticalContentAlignment="Stretch" 
-            FontSize="30" FontWeight="Bold" Margin="372,226,0,0" Foreground="DarkGray" Width="482" RenderTransformOrigin="0.505,0.539"/>
+            FontSize="20" FontWeight="Bold" Margin="372,226,0,0" Foreground="DarkGray" Width="482" RenderTransformOrigin="0.505,0.539"/>
 
 
 

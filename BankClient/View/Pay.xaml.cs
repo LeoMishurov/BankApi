@@ -28,22 +28,19 @@ namespace BankClient
 
         
         /// <summary>
-        /// пополнение баланса каарты
+        /// оплата картой
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private async void Pay_Click(object sender, RoutedEventArgs e)
         {
-            //провера на введенное количество символов и на то чтобы введенное было число
-            int res;
-            bool isInt = int.TryParse(tbCardNumber.Text, out res);
-            //bool isInt = Int32.TryParse(tbCardNumber.Text, out res);
-            if (tbCardNumber.Text.Length != 19 || !isInt)
+            //проверка на введенное количество символов и на то чтобы введенное было число
+            if (!repository.ErrorChecking(tbCardNumber.Text) || !repository.SumChecking(tbSum.Text))
             {
                 lbInformation.Content = "Произошла ошибка. Проверьте введенные данные";
                 return;
             }          
-                var result = await repository.Pay(tbSum.Text, tbCardNumber.Text);
+                var result = await repository.Pay(tbSum.Text, repository.AddSpace(tbCardNumber.Text));
 
                 if (result.IsSuccess)
                 {
@@ -54,9 +51,7 @@ namespace BankClient
                     tbSum.Clear();
                 }
                 else
-                {
-
-                    //lbInformation.Content = "Произошла ошибка. Проверьте введенные данные";
+                {                  
                     lbInformation.Content = result.Error;
                 }
         }

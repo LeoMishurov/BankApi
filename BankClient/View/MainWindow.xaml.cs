@@ -13,6 +13,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
@@ -76,10 +77,21 @@ namespace BankClient
         {
             //записывает в lable Login
             lbUser.Content = GlobalVar.Login;
-
             Grid1.Children.Clear();
-          
-        }/// <summary>
+     }
+        /// <summary>
+        /// разблокировка кнопок после авторизации
+        /// </summary>
+        public void UnlockButtons() 
+        {
+            btnCardAdd.IsEnabled = true;
+            btnBalanceAdd.IsEnabled = true;
+            btnBlock.IsEnabled = true;
+            DailyLimit.IsEnabled = true;
+            Pay.IsEnabled = true;
+            Remittance.IsEnabled = true;    
+        }
+        /// <summary>
         /// очищает окно и открывает следующее
         /// </summary>
         /// <param name="control"></param>
@@ -153,5 +165,7 @@ namespace BankClient
             Remittance remittance = new();
             ShowWindow(remittance);
         }
+
+
     }
 }
