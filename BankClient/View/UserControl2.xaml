@@ -207,52 +207,69 @@
     </UserControl.Resources>
     <Grid x:Name="Grid2" Height="451" VerticalAlignment="Center" Width="901.333" Background="#FF330644">
 
-
+        <Image HorizontalAlignment="Left" Height="138" Margin="560,73,0,0" VerticalAlignment="Top" Width="91" Source="/View/K2.png"/>
+        <Image HorizontalAlignment="Left" Height="89" Margin="250,73,0,0" VerticalAlignment="Top" Width="91" Source="/View/K1.png"/>
 
         <TextBox Style="{DynamicResource TextBoxStyle2}" 
                  x:Name="tbLogin" 
-                 Margin="289,91,289,311" FontSize="30" 
+                 Margin="313,117,312,301" FontSize="20" 
                  FontWeight="Bold" 
                  SelectionOpacity="1"
                  BorderBrush="{x:Null}" 
-                 Foreground="DarkGray"                                 
-                 Width="323" 
-                 Height="49"   
+                 Foreground="DarkGray"  
+                 Background="AliceBlue"
+                 Height="33" 
+                 Width="276"    
                  HorizontalContentAlignment="Center" 
                 
                  />
         <TextBox Style="{DynamicResource TextBoxStyle1}"
                  x:Name="tbPassword"   
-                 Margin="0,199,0,0" 
-                 FontSize="30" 
-                 FontWeight="Bold" 
-                 Height="49" 
+                 Margin="0,204,0,0" 
+                 FontSize="20" 
+                 FontWeight="Bold"                  
                  VerticalAlignment="Top" 
-                 HorizontalAlignment="Center" 
-                 Width="323"
-                 Foreground="DarkGray"              
+                 HorizontalAlignment="Center"                 
+                 Foreground="DarkGray"       
+                 Background="AliceBlue"
                  HorizontalContentAlignment="Center"
+                 Height="33" 
+                 Width="276"
+                 
                  />
         <Button Style="{DynamicResource ButtonStyle2}" x:Name="btnRegistr" Content="зарегстрироваться" 
                 Foreground="DarkGray" 
-                Margin="297,292,298,0" 
+                Margin="312,271,313,0" 
                 Click="btnRegistr_Click" 
-                Height="62" 
-                FontSize="30" 
+                
+                FontSize="20" 
                 VerticalAlignment="Top"
                 FontWeight="Bold"
                 Background="#FF330644"
                 BorderBrush="#FF20022C" 
                 BorderThickness="3,3,3,3"
+                Width="276"
+                Height="40"
                 />
         <Label Content="Username" HorizontalAlignment="Center" VerticalAlignment="Top" 
                HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" 
-               FontSize="36" FontWeight="Bold" Margin="0,31,0,0" Foreground="DarkGray"/>
+               FontSize="25" FontWeight="Bold" Margin="0,71,0,0" Foreground="DarkGray"/>
 
 
         <Label Content="Password" HorizontalAlignment="Center" VerticalAlignment="Top" 
                    HorizontalContentAlignment="Center" VerticalContentAlignment="Stretch" 
-                   FontSize="36" FontWeight="Bold" Margin="0,139,0,0" Foreground="DarkGray" Width="323"/>
+                   FontSize="25" FontWeight="Bold" Margin="0,157,0,0" Foreground="DarkGray" Width="158"/>
+        
+        <Image HorizontalAlignment="Left" Height="66" Margin="538,160,0,0" VerticalAlignment="Top" Width="93" Source="/View/K.png" RenderTransformOrigin="0.5,0.5">
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="31.086"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
 
 
 

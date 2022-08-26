@@ -32,6 +32,8 @@ namespace BankClient
         {
             InitializeComponent();
 
+            
+
             lbCards.ItemsSource = listItems.Cards;// привязка данных
 
             WindowManeger.mainWindow = this;

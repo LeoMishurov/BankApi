@@ -206,51 +206,56 @@
         </Style>
     </UserControl.Resources>
     <Grid x:Name="Grid2" Height="451" VerticalAlignment="Center" Width="901.333">
-
+        <Border Background="#FF330644" BorderThickness="1" Margin="371,0,0,0"/>
         <Button Style="{DynamicResource ButtonStyle2}" x:Name="btnBlock" 
                 Content="блокировать" 
                 Foreground="DarkGray"      
-                Margin="462,221,151,0" 
-                Height="52" 
-                FontSize="30" 
+                Margin="468,231,157,0"                
+                FontSize="20" 
                 VerticalAlignment="Top"
                 FontWeight="Bold"
                 Background="#FF330644"
                 BorderBrush="#FF20022C" 
                 BorderThickness="3,3,3,3"
-                Click="btnBlock_Click"/>
+                Click="btnBlock_Click"
+                 Width="276"
+                Height="40"   />
         <Label Content="номер карты" x:Name="lbCardNumber" 
             HorizontalAlignment="Left" VerticalAlignment="Top" 
             HorizontalContentAlignment="Center" VerticalContentAlignment="Stretch" 
-            FontSize="36" FontWeight="Bold" Margin="408,82,0,0" Foreground="DarkGray" Width="410" RenderTransformOrigin="0.505,0.539"/>
+            FontSize="20" FontWeight="Bold" Margin="520,121,0,0" Foreground="DarkGray"  Width="174" Height="38" RenderTransformOrigin="0.505,0.539"/>
         <TextBox Style="{DynamicResource TextBoxStyle2}" 
             x:Name="tbCardNumber" 
-            Margin="445,149,133,253" FontSize="30" 
+            Margin="469,171,156,247" FontSize="20" 
             FontWeight="Bold" 
             SelectionOpacity="1"
             BorderBrush="{x:Null}" 
             Foreground="DarkGray"                               
-            Width="323" 
-            Height="49"   
+            Height="33" 
+            Width="276"      
             HorizontalContentAlignment="Center" 
-                
+            Background="AliceBlue"    
                  />
         <Button Style="{DynamicResource ButtonStyle2}" x:Name="btnUnBlock" 
             Content="разблокировать" 
             Foreground="DarkGray"      
-            Margin="462,297,151,0" 
-            Height="52" 
-            FontSize="30" 
+            Margin="468,297,157,0" 
+            
+            FontSize="20" 
             VerticalAlignment="Top"
             FontWeight="Bold"
             Background="#FF330644"
             BorderBrush="#FF20022C" 
             BorderThickness="3,3,3,3"
-            Click="btnUnBlock_Click"/>
+            Click="btnUnBlock_Click"
+            Width="276"
+            Height="40"  
+                />
         <Label Content="" x:Name="lbInformation" 
             HorizontalAlignment="Left" VerticalAlignment="Top" 
             HorizontalContentAlignment="Center" VerticalContentAlignment="Stretch" 
             FontSize="16" FontWeight="Bold" Margin="340,367,0,0" Foreground="DarkGray" Width="531" RenderTransformOrigin="0.51,0.601"/>
+        <Image HorizontalAlignment="Left" Height="100" Margin="557,38,0,0" VerticalAlignment="Top" Width="100" Source="/View/Blockk.png"/>
 
 
 

@@ -206,51 +206,53 @@
         </Style>
     </UserControl.Resources>
     <Grid x:Name="Grid2" Height="451" VerticalAlignment="Center" Width="901.333">
-
+        <Border Background="#FF330644" BorderThickness="1" Margin="371,0,0,0"/>
         <Button Style="{DynamicResource ButtonStyle2}" x:Name="btnCardAdd" 
                 Content="совершить перевод" 
                 Foreground="DarkGray"
-                Margin="450,343,137,0" 
-                Height="52" 
-                FontSize="20" 
+                Margin="469,342,156,0" 
+                             
                 VerticalAlignment="Top"
                 FontWeight="Bold"
                 Background="#FF330644"
                 BorderBrush="#FF20022C" 
                 BorderThickness="3,3,3,3"
-                Click="Remittance_Click"/>
+                Click="Remittance_Click" 
+                Width="276"
+                Height="40"   
+                FontSize="20" />
 
         <Label Content="сумма перевода" x:Name="lbSum" 
             HorizontalAlignment="Left" VerticalAlignment="Top" 
             HorizontalContentAlignment="Center" VerticalContentAlignment="Stretch" 
-            FontSize="20" FontWeight="Bold" Margin="518,19,0,0" Foreground="DarkGray" Width="174" Height="38"/>
+            FontSize="20" FontWeight="Bold" Margin="518,111,0,0" Foreground="DarkGray" Width="174" Height="38"/>
         <Label Content="номер карты отправителя" x:Name="lbCardNumber" 
             HorizontalAlignment="Left" VerticalAlignment="Top" 
             HorizontalContentAlignment="Center" VerticalContentAlignment="Stretch" 
-            FontSize="20" FontWeight="Bold" Margin="456,128,0,0" Foreground="DarkGray" Width="301" RenderTransformOrigin="0.505,0.539"/>
+            FontSize="20" FontWeight="Bold" Margin="456,182,0,0" Foreground="DarkGray" Width="301" RenderTransformOrigin="0.505,0.539" Height="36.6"/>
         <TextBox Style="{DynamicResource TextBoxStyle2}" 
             x:Name="tbFromCardNumber" 
-            Margin="445,178,133,224" FontSize="30" 
+            Margin="467,221,158,197" FontSize="20" 
             FontWeight="Bold" 
             SelectionOpacity="1"
             BorderBrush="{x:Null}" 
-            Foreground="DarkGray"                               
-            Width="323" 
-            Height="49"   
+            Foreground="DarkGray"   
             HorizontalContentAlignment="Center" 
-                
+            Height="33" 
+            Width="276"  
+            Background="AliceBlue"
                  />
         <TextBox Style="{DynamicResource TextBoxStyle2}" 
             x:Name="tbSum" 
-            Margin="445,74,133,328" FontSize="30" 
+            Margin="469,150,156,268" FontSize="20" 
             FontWeight="Bold" 
             SelectionOpacity="1"
             BorderBrush="{x:Null}" 
             Foreground="DarkGray"                               
-            Width="323" 
-            Height="49"   
+            Height="33" 
+            Width="276"   
             HorizontalContentAlignment="Center" 
-                
+            Background="AliceBlue"    
                  />
         <Label Content="" x:Name="lbInformation" 
             HorizontalAlignment="Left" VerticalAlignment="Top" 
@@ -263,13 +265,16 @@
             SelectionOpacity="1"
             BorderBrush="{x:Null}" 
             Foreground="DarkGray"   
-            HorizontalContentAlignment="Center" 
-                
+            HorizontalContentAlignment="Center"
+            Height="33" 
+            Width="276" 
+            Background="AliceBlue"    
                  />
         <Label Content="номер карты получателя" x:Name="lbCardNumber_Copy" 
             HorizontalAlignment="Left" VerticalAlignment="Top" 
             HorizontalContentAlignment="Center" VerticalContentAlignment="Stretch" 
-            FontSize="20" FontWeight="Bold" Margin="372,226,0,0" Foreground="DarkGray" Width="482" RenderTransformOrigin="0.505,0.539"/>
+            FontSize="20" FontWeight="Bold" Margin="477,254,0,0" Foreground="DarkGray" Width="260" RenderTransformOrigin="0.505,0.539"/>
+        <Image HorizontalAlignment="Left" Height="100" Margin="558,18,0,0" VerticalAlignment="Top" Width="100" Source="/View/Remittance.png"/>
 
 
 

@@ -5,7 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BankClient"
         mc:Ignorable="d"
-        Title="MainWindow" Height="500" Width="900">
+        
+        Title="MainWindow" Height="500" Width="900"
+        
+        >
     <Window.Resources>
         <Style x:Key="LabelStyle1" TargetType="{x:Type Label}">
             <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
@@ -42,17 +45,17 @@
             <Button x:Name="Pay" Content="оплата" FontSize="15" Width="150" Background="Yellow" FontWeight="Bold" Click="Pay_Click" IsEnabled="False"/>
             <Button x:Name="Remittance" Content="перевод" FontSize="15" Width="150" Background="Yellow" FontWeight="Bold" Click="Remittance_Click" IsEnabled="False"/>
         </StackPanel>
-        <Grid Grid.Row="1" x:Name="Grid0"  Background="#FF330644">
-            <Label Content="ваши карты" HorizontalAlignment="Left" Margin="115,162,0,0" 
+        <Grid x:Name="Grid0"  Background="#FF330644" Grid.Row="1">
+            <Label Content="ваши карты" HorizontalAlignment="Left" Margin="164,112,0,0" 
                    VerticalAlignment="Top" Width="138" FontSize="20" FontWeight="Bold" Foreground="DarkGray"/>
 
-            <ListBox x:Name="lbCards"  Margin="37,206,573,10"  ScrollViewer.CanContentScroll="True">
+            <ListBox x:Name="lbCards"  Margin="37,206,573,10"  ScrollViewer.CanContentScroll="True" Background="AliceBlue">
 
-                
-                        <ListBox.ItemTemplate>
-                  
+
+                <ListBox.ItemTemplate>
+
                     <DataTemplate>
-                        
+
                         <StackPanel Orientation="Vertical">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="номер карты       " FontWeight="Bold" FontSize="14" Foreground="Blue"/>
@@ -74,25 +77,28 @@
                                 <TextBlock Text="активность        " FontWeight="Bold" FontSize="14" Width="120"/>
                                 <TextBlock Text="{Binding IsActive  }" FontWeight="Bold" Width="130" TextAlignment="Center"/>
                             </StackPanel>
-                            
+
 
                         </StackPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
-            </ListBox> 
-                     
-                     
+            </ListBox>
 
-            
 
-            <Image HorizontalAlignment="Left" Height="100" Margin="132,23,0,0" 
-                   VerticalAlignment="Top" Width="100" Source="/User.png"/>
-            <Label x:Name="lbUser" Content="ваши карты" HorizontalAlignment="Left" Margin="37,129,0,0" 
-                VerticalAlignment="Top" Width="290" FontSize="20" FontWeight="Bold" Foreground="DarkGray"
-                HorizontalContentAlignment="Center"
+
+            <Image HorizontalAlignment="Left" Height="273" Margin="390,120,0,0" VerticalAlignment="Top" Width="480" Source="/View/Main.png" Grid.Row="1"/>
+
+            <Image HorizontalAlignment="Left" Height="86" Margin="50,54,0,0" 
+                   VerticalAlignment="Top" Width="82" Source="/View/User.png" />
+
+            <Label x:Name="lbUser" Content="leo" HorizontalAlignment="Left" Margin="164,66,0,0" 
+                VerticalAlignment="Top" Width="157" FontSize="30" FontWeight="Bold" Foreground="DarkGray"
+                HorizontalContentAlignment="Left"
                    />
-
+            <Image HorizontalAlignment="Left" Height="273" Margin="390,120,0,0" VerticalAlignment="Top" Width="480" Source="/View/Main.png" Grid.Row="1"/>
+            
         </Grid>
-        <Grid Grid.Row="1" x:Name="Grid1"/>
+        <Grid x:Name="Grid1" Grid.Row="1"/>
+        
     </Grid>
 </Window>

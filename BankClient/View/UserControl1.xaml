@@ -205,30 +205,33 @@
             </Setter>
         </Style>
     </UserControl.Resources>
-    <Grid x:Name="Grid2" Height="451" VerticalAlignment="Center" Width="901.333" Background="#FF330644">
+    <Grid x:Name="Grid2" Height="451" VerticalAlignment="Center" Width="901.333" Background="#FF330644"  >
 
-
+        <Image HorizontalAlignment="Left" Height="138" Margin="560,73,0,0" VerticalAlignment="Top" Width="91" Source="/View/K2.png"/>
+        <Image HorizontalAlignment="Left" Height="89" Margin="250,73,0,0" VerticalAlignment="Top" Width="91" Source="/View/K1.png"/>
 
         <TextBox Style="{DynamicResource TextBoxStyle2}" 
                  x:Name="tbLogin" 
-                 Margin="289,91,289,311" FontSize="30" 
+                 Margin="313,117,312,301" FontSize="20" 
                  FontWeight="Bold" 
                  SelectionOpacity="1"
                  BorderBrush="{x:Null}" 
                  Foreground="DarkGray"                               
-                 Width="323" 
-                 Height="49"   
+                Height="33" 
+                Width="276"   
+                 Background="AliceBlue"
                  HorizontalContentAlignment="Center" 
                 
                  />
         <TextBox Style="{DynamicResource TextBoxStyle1}"
                  x:Name="tbPassword" 
-                 FontSize="30" 
+                 FontSize="20" 
                  FontWeight="Bold"                 
                  VerticalAlignment="Top" 
                  HorizontalAlignment="Center" 
-                 Height="49" 
-                 Width="323"
+                 Height="33" 
+                 Width="276" 
+                 Background="AliceBlue"
                  Foreground="DarkGray"
                  HorizontalContentAlignment="Center" Margin="0,205,0,0"
                  />
@@ -238,39 +241,55 @@
                 Foreground="DarkGray"   
                HorizontalContentAlignment="Center"
                 Click="btnAuthorization_Click" 
-                Height="63"
+                
                 VerticalAlignment="Top" 
                 RenderTransformOrigin="0.486,0.607" 
-                Margin="376,272,376,0" 
-                FontSize="30" 
+                Margin="311,271,314,0" 
+                FontSize="20" 
                 FontWeight="Bold" 
                 Background="#FF330644"
                 BorderBrush="#FF20022C" 
-                BorderThickness="3,3,3,3"  />
+                BorderThickness="3,3,3,3"
+                Width="276"
+                Height="40"/>
         <Button Style="{DynamicResource ButtonStyle2}" x:Name="btnRegistr" Content="регистрация" 
                 Foreground="DarkGray"  
                 HorizontalContentAlignment="Center"
-                Margin="306,350,307,0" 
+                Margin="312,328,313,0" 
                 Click="btnRegistr_Click" 
-                Height="63" 
-                FontSize="30" 
+                
+                FontSize="20" 
                 VerticalAlignment="Top"
                 FontWeight="Bold"
                 Background="#FF330644"
                 BorderBrush="#FF20022C" 
-                BorderThickness="3,3,3,3"/>
+                BorderThickness="3,3,3,3"
+                Width="276"
+                Height="40"
+                />
 
-        <Label Content="Username" HorizontalAlignment="Center" VerticalAlignment="Top" 
+        <Label Content="Username" HorizontalAlignment="Left" VerticalAlignment="Top" 
                HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" 
-               FontSize="36" FontWeight="Bold" Margin="0,31,0,0" Foreground="DarkGray"/>
+               FontSize="25" FontWeight="Bold" Margin="383,70,0,0" Foreground="DarkGray"/>
 
 
         <Label Content="Password" HorizontalAlignment="Center" VerticalAlignment="Top" 
                    HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" 
-                   FontSize="36" FontWeight="Bold" Margin="0,139,0,0" Foreground="DarkGray"/>
+                   FontSize="25" FontWeight="Bold" Margin="0,157,0,0" Foreground="DarkGray"/>
         <Label x:Name="lbError" Content="" HorizontalAlignment="Center" VerticalAlignment="Top" 
             HorizontalContentAlignment="Center" VerticalContentAlignment="Stretch" 
-            FontSize="16" FontWeight="Bold" Foreground="DarkGray" Width="649" Margin="0,7,0,0"/>
+            FontSize="16" FontWeight="Bold" Foreground="DarkGray" Width="649" Margin="0,395,0,0"/>
+       
+        <Image HorizontalAlignment="Left" Height="66" Margin="538,160,0,0" VerticalAlignment="Top" Width="93" Source="/View/K.png" RenderTransformOrigin="0.5,0.5">
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="31.086"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
 
 
 

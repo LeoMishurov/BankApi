@@ -206,28 +206,32 @@
         </Style>
     </UserControl.Resources>
     <Grid x:Name="Grid2" Height="451" VerticalAlignment="Center" Width="901.333">
-
+        <Border Background="#FF330644" BorderThickness="1" Margin="371,0,0,0"/>
         <Button Style="{DynamicResource ButtonStyle2}" x:Name="btnCardAdd" 
                 Content="выпустить карту" 
                 Foreground="DarkGray"       
-                Margin="462,295,151,0" 
-                Height="52" 
-                FontSize="30" 
+                Margin="468,299,157,0" 
+                
+                FontSize="20" 
                 VerticalAlignment="Top"
                 FontWeight="Bold"
                 Background="#FF330644"
                 BorderBrush="#FF20022C" 
                 BorderThickness="3,3,3,3"
-                Click="btnCardAdd_Click"/>
+                Click="btnCardAdd_Click"
+                Width="276"
+                Height="40"
+                />
 
         <Label Content="" x:Name="lbInformation" 
             HorizontalAlignment="Left" VerticalAlignment="Top" 
             HorizontalContentAlignment="Center" VerticalContentAlignment="Stretch" 
-            FontSize="36" FontWeight="Bold" Margin="340,146,0,0" Foreground="DarkGray" Width="531"/>
+            FontSize="36" FontWeight="Bold" Margin="340,164,0,0" Foreground="DarkGray" Width="531"/>
         <Label Content="" x:Name="lbCardNumber" 
             HorizontalAlignment="Left" VerticalAlignment="Top" 
             HorizontalContentAlignment="Center" VerticalContentAlignment="Stretch" 
-            FontSize="36" FontWeight="Bold" Margin="408,208,0,0" Foreground="DarkGray" Width="410" RenderTransformOrigin="0.505,0.539"/>
+            FontSize="36" FontWeight="Bold" Margin="408,226,0,0" Foreground="DarkGray" Width="410" RenderTransformOrigin="0.505,0.539"/>
+        <Image HorizontalAlignment="Left" Height="179" Margin="484,15,0,0" VerticalAlignment="Top" Width="244" Source="/View/CardAdd.png"/>
 
 
 

@@ -206,13 +206,14 @@
         </Style>
     </UserControl.Resources>
     <Grid x:Name="Grid2" Height="451" VerticalAlignment="Center" Width="901.333">
-
+        <Border Background="#FF330644" BorderThickness="1" Margin="371,0,0,0"/>
         <Button Style="{DynamicResource ButtonStyle2}" x:Name="btnCardAdd" 
                 Content="совершить платеж" 
                 Foreground="DarkGray"
-                Margin="454,295,141,0" 
-                Height="52" 
-                FontSize="30" 
+                Margin="469,299,156,0" 
+                Width="276"
+                Height="40"
+                FontSize="20" 
                 VerticalAlignment="Top"
                 FontWeight="Bold"
                 Background="#FF330644"
@@ -223,39 +224,40 @@
         <Label Content="сумма" x:Name="lbSum" 
             HorizontalAlignment="Left" VerticalAlignment="Top" 
             HorizontalContentAlignment="Center" VerticalContentAlignment="Stretch" 
-            FontSize="36" FontWeight="Bold" Margin="408,44,0,0" Foreground="DarkGray" Width="410" Height="58"/>
+            FontSize="20" FontWeight="Bold" Margin="518,134,0,0" Foreground="DarkGray" Width="174" Height="38"/>
         <Label Content="номер карты" x:Name="lbCardNumber" 
-            HorizontalAlignment="Left" VerticalAlignment="Top" 
+            HorizontalAlignment="Left" VerticalAlignment="Center" 
             HorizontalContentAlignment="Center" VerticalContentAlignment="Stretch" 
-            FontSize="36" FontWeight="Bold" Margin="408,156,0,0" Foreground="DarkGray" Width="410" RenderTransformOrigin="0.505,0.539"/>
+            FontSize="20" FontWeight="Bold" Margin="520,0,0,0" Foreground="DarkGray" Width="174" Height="38" RenderTransformOrigin="0.505,0.539"/>
         <TextBox Style="{DynamicResource TextBoxStyle2}" 
             x:Name="tbCardNumber" 
-            Margin="445,223,133,179" FontSize="30" 
+            Margin="469,244,156,174" FontSize="20" 
             FontWeight="Bold" 
             SelectionOpacity="1"
             BorderBrush="{x:Null}" 
             Foreground="DarkGray"                               
-            Width="323" 
-            Height="49"   
+            Height="33" 
+            Width="276"    
             HorizontalContentAlignment="Center" 
                 
                  />
         <TextBox Style="{DynamicResource TextBoxStyle2}" 
             x:Name="tbSum" 
-            Margin="445,110,133,292" FontSize="30" 
+            Margin="469,172,156,246" FontSize="20" 
             FontWeight="Bold" 
             SelectionOpacity="1"
             BorderBrush="{x:Null}" 
             Foreground="DarkGray"                               
-            Width="323" 
-            Height="49"   
+            Height="33" 
+            Width="276"  
             HorizontalContentAlignment="Center" 
                 
                  />
         <Label Content="" x:Name="lbInformation" 
             HorizontalAlignment="Left" VerticalAlignment="Top" 
             HorizontalContentAlignment="Center" VerticalContentAlignment="Stretch" 
-            FontSize="16" FontWeight="Bold" Margin="340,367,0,0" Foreground="DarkGray" Width="531" RenderTransformOrigin="0.51,0.601"/>
+            FontSize="16" FontWeight="Bold" Margin="340,381,0,0" Foreground="DarkGray" Width="531" RenderTransformOrigin="0.51,0.601"/>
+        <Image HorizontalAlignment="Left" Height="100" Margin="557,56,0,0"  VerticalAlignment="Top" Width="100" Source="/View/Sum.png" />
 
 
 
