@@ -1,5 +1,6 @@
 ﻿using BankApi.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Linq;
 
 namespace BankApi.Repositories
 {
@@ -102,7 +103,7 @@ namespace BankApi.Repositories
         /// <param name="cardNumber"></param>
         /// <param name="userId"></param>
         /// <returns></returns>
-        public String UnBockCard(string cardNumber, Guid userId)
+        public String UnBlockCard(string cardNumber, Guid userId)
         {
             var Card = myContext.Card.FirstOrDefault(x => x.CardNumber == cardNumber && x.UserID == userId);
             if (Card != null && Card.IsActive == false)
@@ -225,8 +226,19 @@ namespace BankApi.Repositories
                 //сохранение транзакции в бд
                 repositoryTransaction.TransactionsReceipts(userId, sum,inCardNumber);
 
-                return "перевод выполнен успешно";
+                return null;
             }
+        }
+        /// <summary>
+        /// возвращает все карты пользователя
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
+        public List<CardDTO>ReturnCards(Guid userId) 
+        {                 
+            return myContext.Card.Where(x => x.UserID == userId)
+                .Select(x=> CardDTO.FromCard(x))
+                .ToList();
         }
     }
 }

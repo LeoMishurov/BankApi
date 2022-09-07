@@ -12,7 +12,7 @@ namespace BankApi.Controllers
     [ApiController]
     public class CardController : ControllerBase
     {
-       private readonly RepositoryCard repositoryCard;
+        private readonly RepositoryCard repositoryCard;
 
         public CardController(RepositoryCard repositoryCard)
         {
@@ -24,12 +24,21 @@ namespace BankApi.Controllers
         {
             //достает id пользоввателя из токина
             var UserId = User.Identity.GetId();
-       
-            return CardDTO(repositoryCard.CardAdd(UserId));
+
+            return CardDTO.FromCard(repositoryCard.CardAdd(UserId));
+        }
+
+        [HttpPost("ReturnCards")]
+        public ActionResult<List<CardDTO>> ReturnCards()
+        {
+            //достает id пользоввателя из токина
+            var UserId = User.Identity.GetId();
+
+            return repositoryCard.ReturnCards(UserId);
         }
 
         [HttpPost("Balance")]
-        public ActionResult<String> Balance(int sum, string cardNumber) 
+        public ActionResult<String> Balance(int sum, string cardNumber)
         {
             //достает id пользоввателя из токина
             var UserId = User.Identity.GetId();
@@ -46,13 +55,13 @@ namespace BankApi.Controllers
             return repositoryCard.BlockCard(cardNumber, UserId);
         }
 
-        [HttpPost("UnBock")]
-        public ActionResult<String> UnBockCard(string cardNumber)
+        [HttpPost("UnBlock")]
+        public ActionResult<String> UnBlockCard(string cardNumber)
         {
             //достает id пользоввателя из токина
             var UserId = User.Identity.GetId();
 
-            return repositoryCard.UnBockCard(cardNumber, UserId);
+            return repositoryCard.UnBlockCard(cardNumber, UserId);
         }
 
         [HttpPost("DailyLimit")]
@@ -65,34 +74,32 @@ namespace BankApi.Controllers
         }
 
         [HttpPost("Pay")]
-        public ActionResult<String> Pay(int sum, string cardNumber) 
+        public ActionResult<String> Pay(int sum, string cardNumber)
         {
             //достает id пользоввателя из токина
             var UserId = User.Identity.GetId();
 
             var error = repositoryCard.Pay(UserId, sum, cardNumber);
+
             if (string.IsNullOrEmpty(error))
                 return Ok();
             else
                 return BadRequest(error);
         }
 
-        [HttpPost("translation")]
+        [HttpPost("Remittance")]
         public ActionResult<String> Remittance(int sum, string fromCardNumber, string inCardNumber)
         {
             //достает id пользоввателя из токина
             var UserId = User.Identity.GetId();
 
-            return repositoryCard.Remittance(UserId, sum, fromCardNumber, inCardNumber);
-        }
-        private CardDTO CardDTO(Card card) 
-        {
-            CardDTO cardDTO = new CardDTO
-            {
-                CardNumber = card.CardNumber,
-                ExpirationCard = card.ExpirationCard.ToString("MM/yy")
-            };
-            return cardDTO;
+            var error = repositoryCard.Remittance(UserId, sum, fromCardNumber, inCardNumber);
+
+            if (string.IsNullOrEmpty(error))
+                return Ok();
+            else
+                return BadRequest(error);
+            //return repositoryCard.Remittance(UserId, sum, fromCardNumber, inCardNumber);
         }
     }
 }

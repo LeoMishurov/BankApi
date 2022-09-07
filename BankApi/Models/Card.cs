@@ -19,6 +19,23 @@
     {
         public string CardNumber { get; set; }
         public string ExpirationCard { get; set; }
+        public decimal Balance { get; set; }
+        public decimal DailyLimit { get; set; }
+        public bool IsActive { get; set; }
+        /// <summary>
+        /// присваивает значения полям CardDTO и возвращает заполненный экземпляр класса CardDTO
+        /// </summary>
+        /// <param name="card"></param>
+        /// <returns></returns>
+        public static CardDTO FromCard(Card card)
+        => new CardDTO
+        {
+            CardNumber = card.CardNumber,
+            ExpirationCard = card.ExpirationCard.ToString("MM/yyyy"),
+            Balance = card.Balance,
+            DailyLimit = card.DailyLimit,
+            IsActive = card.IsActive
+        };
     }
   
 }

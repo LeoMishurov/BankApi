@@ -62,8 +62,7 @@ namespace BankApi.Repositories
         {
             
               return   myContext.Transaction.Where(x => x.Date == DateTime.Now.Date && x.CardNumber == cardNamber).Sum(x => x.SumPay);
-                    
-            //return transactions.Sum(x => x.SumPay);
+                              
         }
     }
 }
