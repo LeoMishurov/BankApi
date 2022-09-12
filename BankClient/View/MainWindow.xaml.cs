@@ -28,21 +28,19 @@ namespace BankClient
         UserControl1 input = new();
 
         private ListItems listItems = new();
+
+        Repository repository = new();
         public MainWindow()
         {
             InitializeComponent();
 
-            
-
             lbCards.ItemsSource = listItems.Cards;// привязка данных
 
-            WindowManeger.mainWindow = this;
+            WindowManager.mainWindow = this;
             Grid1.Children.Add(input);
             
         }
-        Repository repository = new();
-
-        
+           
         private class ListItems
         {
             // ObservableCollection - автоммтически создает событие и обновляет
@@ -75,12 +73,13 @@ namespace BankClient
         /// <summary>
         /// закрывает окно
         /// </summary>
-        public void ClouseWindow()
+        public void CloseWindow()
         {
             //записывает в lable Login
             lbUser.Content = GlobalVar.Login;
             Grid1.Children.Clear();
      }
+
         /// <summary>
         /// разблокировка кнопок после авторизации
         /// </summary>
@@ -93,6 +92,7 @@ namespace BankClient
             Pay.IsEnabled = true;
             Remittance.IsEnabled = true;    
         }
+
         /// <summary>
         /// очищает окно и открывает следующее
         /// </summary>
@@ -105,6 +105,7 @@ namespace BankClient
             //записывает в lable Login
             lbUser.Content = GlobalVar.Login;
         }
+
         /// <summary>
         /// запускает окно "выпуск карты"
         /// </summary>
@@ -126,6 +127,7 @@ namespace BankClient
             BalanceAdd balanceAdd = new();
             ShowWindow(balanceAdd);
         }
+
       /// <summary>
       /// запускает окно блокировки карты
       /// </summary>
@@ -136,6 +138,7 @@ namespace BankClient
             Block block = new();
             ShowWindow(block);
         }
+
         /// <summary>
         /// запускает окно установки дневного лмимта
         /// </summary>
@@ -157,6 +160,7 @@ namespace BankClient
             Pay pay = new();
             ShowWindow(pay);
         }
+
         /// <summary>
         /// запускает окно перевода по номеру карты
         /// </summary>

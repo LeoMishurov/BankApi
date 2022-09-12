@@ -46,7 +46,7 @@ namespace BankClient
             {
                 
                 lbInformation.Content = $"баланс карты {tbCardNumber.Text} попполнен на {tbSum.Text}";
-                WindowManeger.ReturnCards();
+                WindowManager.ReturnCards();
                 tbCardNumber.Clear();
                 tbSum.Clear();
             }

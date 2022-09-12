@@ -38,7 +38,7 @@ namespace BankClient
             {
                 lbCardNumber.Content = result.Value.CardNumber;
                 lbInformation.Content = "карта успешно выпущена";
-                WindowManeger.ReturnCards();
+                WindowManager.ReturnCards();
             }
             else
             {

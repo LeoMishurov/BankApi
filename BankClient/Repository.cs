@@ -60,6 +60,7 @@ namespace BankClient
                 return true;
             return false;
         }
+
         /// <summary>
         /// авторизация пользователя
         /// </summary>
@@ -86,6 +87,7 @@ namespace BankClient
                 return false;
             }
         }
+
         /// <summary>
         /// пополнение баланса
         /// </summary>

@@ -46,7 +46,7 @@ namespace BankClient
                 {
 
                     lbInformation.Content = $"оплата на сумму  {tbSum.Text} прошла успешно";
-                    WindowManeger.ReturnCards();
+                    WindowManager.ReturnCards();
                     tbCardNumber.Clear();
                     tbSum.Clear();
                 }

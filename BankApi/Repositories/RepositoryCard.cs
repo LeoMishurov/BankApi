@@ -129,15 +129,15 @@ namespace BankApi.Repositories
         /// <param name="cardNumber"></param>
         /// <param name="userId"></param>
         /// <returns></returns>
-        public string DailyLimi(string cardNumber, Guid userId, decimal sum)
+        public string DailyLimit(string cardNumber, Guid userId, decimal sum)
         {
-            var Card = myContext.Card.FirstOrDefault(x => x.CardNumber == cardNumber && x.UserID == userId);
-            if (Card != null)
+            var card = myContext.Card.FirstOrDefault(x => x.CardNumber == cardNumber && x.UserID == userId);
+            if (card != null)
             {
-                Card.DailyLimit = sum;
-                // редактирование записи в бд
-                myContext.Card.Update(Card);
-                //сохранение в бд
+                card.DailyLimit = sum;
+                // Редактирование записи в бд
+                myContext.Card.Update(card);
+                // Сохранение в бд
                 myContext.SaveChanges();
 
                 return "дневной лимит установлен, в размере " + sum.ToString();
@@ -164,7 +164,7 @@ namespace BankApi.Repositories
 
                 return "недостаточо средств";
 
-            else if (Card.DailyLimit < (repositoryTransaction.GetTransactions(userId,cardNumber) + sum) && Card.DailyLimit > 0)
+            else if (Card.DailyLimit < (repositoryTransaction.GetTransactions(cardNumber) + sum) && Card.DailyLimit > 0)
 
                 return "вами будет превышен дневной лимит";
 
@@ -172,12 +172,12 @@ namespace BankApi.Repositories
             {
                 Card.Balance -= sum;
 
-                // редактирование записи в бд
+                // Редактирование записи в бд
                 myContext.Card.Update(Card);
                 //сохранение в бд
                 myContext.SaveChanges();
 
-                //сохранение транзакции в бд
+                // Сохранение транзакции в бд
                 repositoryTransaction.TransactionsPay(userId,sum,cardNumber);
 
                 return null;
@@ -205,7 +205,7 @@ namespace BankApi.Repositories
 
                 return "недостаточо средств";
 
-            else if (FromCard.DailyLimit < (repositoryTransaction.GetTransactions(userId,fromСardNumber) + sum) && FromCard.DailyLimit > 0)
+            else if (FromCard.DailyLimit < (repositoryTransaction.GetTransactions(fromСardNumber) + sum) && FromCard.DailyLimit > 0)
 
                 return "вами будет превышен дневной лимит";
 
@@ -217,13 +217,13 @@ namespace BankApi.Repositories
                 FromCard.Balance -= sum;
                 InCard.Balance += sum;
 
-                // редактирование записи в бд
+                // Редактирование записи в бд
                 myContext.Card.Update(FromCard);
                 myContext.Card.Update(InCard);
-                //сохранение в бд
+                // Сохранение в бд
                 myContext.SaveChanges();
 
-                //сохранение транзакции в бд
+                // Сохранение транзакции в бд
                 repositoryTransaction.TransactionsReceipts(userId, sum,inCardNumber);
 
                 return null;

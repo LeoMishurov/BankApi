@@ -14,7 +14,7 @@
 
         public DateTime Date { get; set; } = DateTime.Now.Date;
 
-        //Сылка на User для enti framevork
+        // Сылка на User для enti framevork
         public User User { get; set; }
     }
 }

@@ -15,7 +15,7 @@ namespace BankApi.Repositories
         /// Добавление пользоввателя в бд
         /// </summary>
         /// <param name="login"></param>
-        /// <param name="parol"></param>
+        /// <param name="password"></param>
         public void AddUser(string login, string password) 
         { 
             User user = new User { Login=login, Password = password };
@@ -24,6 +24,7 @@ namespace BankApi.Repositories
 
             myContext.SaveChanges();
         }
+
         /// <summary>
         /// находит пользователя по логину и паролю
         /// </summary>

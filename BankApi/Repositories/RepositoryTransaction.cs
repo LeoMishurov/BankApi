@@ -20,17 +20,17 @@ namespace BankApi.Repositories
         /// </summary>
         /// <param name="userId"></param>
         /// <param name="sum"></param>
-        public void TransactionsPay(Guid userId, int sum, string cardNumber) 
+        public void TransactionsPay(Guid userId, int sum, string cardNumber)
         {
-             Transaction transaction = new Transaction 
-             {
-                 UserID = userId,
-                 SumPay = sum,         
-                 CardNumber = cardNumber
-             };
-            // подготовка переменной для сохранения
+            Transaction transaction = new Transaction
+            {
+                UserID = userId,
+                SumPay = sum,
+                CardNumber = cardNumber
+            };
+            // Подготовка переменной для сохранения
             myContext.Transaction.Add(transaction);
-            // сохранение в бд
+            // Сохранение в бд
             myContext.SaveChanges();
         }
 
@@ -39,6 +39,7 @@ namespace BankApi.Repositories
         /// </summary>
         /// <param name="userId"></param>
         /// <param name="sum"></param>
+        /// <param name="cardNumber"></param>
         public void TransactionsReceipts(Guid userId, int sum, string cardNumber)
         {
             Transaction transaction = new Transaction
@@ -47,9 +48,9 @@ namespace BankApi.Repositories
                 receipts = sum,
                 CardNumber = cardNumber
             };
-            // подготовка переменной для сохранения
+            // Подготовка переменной для сохранения
             myContext.Transaction.Add(transaction);
-            // сохранение в бд
+            // Сохранение в бд
             myContext.SaveChanges();
         }
 
@@ -58,11 +59,12 @@ namespace BankApi.Repositories
         /// </summary>
         /// <param name="userId"></param>
         /// <returns></returns>
-        public int GetTransactions(Guid userId, string cardNamber) 
+        public int GetTransactions(string cardNamber)
         {
-            
-              return   myContext.Transaction.Where(x => x.Date == DateTime.Now.Date && x.CardNumber == cardNamber).Sum(x => x.SumPay);
-                              
+            return myContext.Transaction
+             .Where(x => x.Date == DateTime.Now.Date && x.CardNumber == cardNamber)
+             .Sum(x => x.SumPay);
+
         }
     }
 }

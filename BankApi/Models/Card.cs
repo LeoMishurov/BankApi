@@ -22,6 +22,7 @@
         public decimal Balance { get; set; }
         public decimal DailyLimit { get; set; }
         public bool IsActive { get; set; }
+
         /// <summary>
         /// присваивает значения полям CardDTO и возвращает заполненный экземпляр класса CardDTO
         /// </summary>

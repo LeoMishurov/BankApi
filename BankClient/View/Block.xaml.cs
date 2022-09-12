@@ -46,7 +46,7 @@ namespace BankClient
                 if (result.IsSuccess)
                 {
                     lbInformation.Content = $"карта {tbCardNumber.Text} заблокирована";
-                    WindowManeger.ReturnCards();
+                    WindowManager.ReturnCards();
                 }
 
                 else
@@ -74,7 +74,7 @@ namespace BankClient
             if (result.IsSuccess)
             {
                 lbInformation.Content = $"карта {tbCardNumber.Text} разблоктрована";
-                WindowManeger.ReturnCards();
+                WindowManager.ReturnCards();
             }
             else
                 lbInformation.Content = "Произошла ошибка. Проверьте введенные данные";           

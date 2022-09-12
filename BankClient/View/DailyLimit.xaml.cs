@@ -41,7 +41,7 @@ namespace BankClient
             if (result.IsSuccess)
             {               
                 lbInformation.Content = $"лимит карты {tbCardNumber.Text} установлен на {tbSum.Text}";
-                WindowManeger.ReturnCards();
+                WindowManager.ReturnCards();
             }
             else
             {

@@ -43,8 +43,8 @@ namespace BankClient
                 //записываем login в класс с глобальными переменными
 
                 GlobalVar.Login = tbLogin.Text;
-                WindowManeger.UnlockButtons();
-                WindowManeger.ClouseWindow();
+                WindowManager.UnlockButtons();
+                WindowManager.CloseWindow();
             }
             
             

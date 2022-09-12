@@ -7,7 +7,7 @@ using System.Windows.Controls;
 
 namespace BankClient
 {
-    public static class WindowManeger
+    public static class WindowManager
     {
 
       public static  MainWindow mainWindow;
@@ -15,10 +15,10 @@ namespace BankClient
         /// <summary>
         /// закрывает окно
         /// </summary>
-        public static void ClouseWindow()
+        public static void CloseWindow()
             
         {         
-            mainWindow.ClouseWindow();
+            mainWindow.CloseWindow();
         }
         /// <summary>
         /// закрывает окно и открывает преданное 

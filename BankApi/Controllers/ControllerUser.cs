@@ -32,9 +32,8 @@ namespace BankApi.Controllers
             {
                 return BadRequest(new { errorText = "Invalid username or password." });
             }
-
             var now = DateTime.UtcNow;
-            // создаем JWT-токен
+            // Создаем JWT-токен
             var jwt = new JwtSecurityToken(
                     issuer: AuthOptions.ISSUER,
                     audience: AuthOptions.AUDIENCE,
@@ -69,16 +68,23 @@ namespace BankApi.Controllers
                 return claimsIdentity;
             }
 
-            // если пользователя не найдено
+            // Если пользователя не найдено
             return null;
         }
 
+        /// <summary>
+        /// создание нового пользователя
+        /// </summary>
+        /// <param name="login"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
         [HttpPost("Add")]
-        public ActionResult UserAdd(string login, string password) 
-        { 
-            var user = repositoryUser.PersonExist(login);
-            if (user)
+        public ActionResult UserAdd(string login, string password)
+        {
+            var userPresence = repositoryUser.PersonExist(login);
+            if (userPresence)
                 return BadRequest("пользователь с таким именем уже существует");
+
             repositoryUser.AddUser(login, password);
             return Ok();
         }

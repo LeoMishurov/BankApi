@@ -37,7 +37,7 @@ namespace BankClient
         private async void btnRegistr_Click(object sender, RoutedEventArgs e)
         {
             UserControl2 userControl2 = new();
-            WindowManeger.ShowWindow(userControl2);
+            WindowManager.ShowWindow(userControl2);
                      
         }
         /// <summary>
@@ -57,9 +57,9 @@ namespace BankClient
 
             if (isAuthorization)
             {            
-                WindowManeger.ReturnCards();
-                WindowManeger.UnlockButtons();
-                WindowManeger.ClouseWindow();               
+                WindowManager.ReturnCards();
+                WindowManager.UnlockButtons();
+                WindowManager.CloseWindow();               
             }
             else 
                 lbError.Content = "не верный логин или пароль";
