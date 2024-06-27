@@ -26,23 +26,24 @@
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="PropertyChanged.Fody" Version="4.1.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="View\Balanse.png" />
-    <Resource Include="View\Block.png" />
-    <Resource Include="View\Blockk.png" />
-    <Resource Include="View\CardAdd.png" />
-    <Resource Include="View\K.png" />
-    <Resource Include="View\K1.png" />
-    <Resource Include="View\K2.png" />
-    <Resource Include="View\limit.png" />
-    <Resource Include="View\Main.png" />
-    <Resource Include="View\Remittance.png" />
-    <Resource Include="View\Sum.png" />
-    <Resource Include="View\Uc1.png" />
-    <Resource Include="View\Uc2.png" />
-    <Resource Include="View\User.png" />
+    <Resource Include="Resources\Image\Balanse.png" />
+    <Resource Include="Resources\Image\Block.png" />
+    <Resource Include="Resources\Image\Blockk.png" />
+    <Resource Include="Resources\Image\CardAdd.png" />
+    <Resource Include="Resources\Image\K.png" />
+    <Resource Include="Resources\Image\K1.png" />
+    <Resource Include="Resources\Image\K2.png" />
+    <Resource Include="Resources\Image\limit.png" />
+    <Resource Include="Resources\Image\Main.png" />
+    <Resource Include="Resources\Image\Remittance.png" />
+    <Resource Include="Resources\Image\Sum.png" />
+    <Resource Include="Resources\Image\Uc1.png" />
+    <Resource Include="Resources\Image\Uc2.png" />
+    <Resource Include="Resources\Image\User.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -50,27 +51,6 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
-    </Compile>
-    <Compile Update="View\Remittance.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="View\Pay.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="View\DailyLimit.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="View\Block.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="View\BalanceAdd.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="View\CardAdd.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="View\UserControl2.xaml.cs">
-      <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
 
@@ -106,7 +86,7 @@
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="View\UserControl2.xaml">
+    <Page Update="View\UserRegistration.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>
     </Page>

@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.Reflection.Emit;
 
 
 namespace BankApi.Models
@@ -21,9 +22,28 @@ namespace BankApi.Models
         /// настройки подключения к базе данных
         /// </summary>
         /// <param name="optionsBuilder"></param>
+        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //{
+        //    optionsBuilder.UseSqlite("Data Source = C:/Users/leont/Desktop/Work/BankApi/BankApi.db;");
+        //}
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite("Data Source = C:/Users/leont/Desktop/Work/BankApi/BankApi.db;");
+            optionsBuilder.UseNpgsql("Host=localhost;Port=5435;Database=postgres;Username=postgres;Password=123");
         }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.HasDefaultSchema("Bank");
+            
+        }
+        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //{
+        //    if (!optionsBuilder.IsConfigured)
+        //    {
+        //        optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=usersdb;Username=postgres;Password=123")
+        //            .UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
+        //    }
+        //    base.OnConfiguring(optionsBuilder);
+        //}
     }
 }

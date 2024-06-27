@@ -3,6 +3,8 @@ using BankApi.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Caching.Distributed;
+using Microsoft.Extensions.Caching.Memory;
 using ToDoListApi;
 
 namespace BankApi.Controllers
@@ -13,10 +15,14 @@ namespace BankApi.Controllers
     public class CardController : ControllerBase
     {
         private readonly RepositoryCard repositoryCard;
+        private readonly IDistributedCache distributedCach;
+        private readonly IMemoryCache memoryCache;
 
-        public CardController(RepositoryCard repositoryCard)
+        public CardController(RepositoryCard repositoryCard, IDistributedCache distributedCach, IMemoryCache memoryCache)
         {
             this.repositoryCard = repositoryCard;
+            this.distributedCach = distributedCach;
+            this.memoryCache = memoryCache;
         }
 
         /// <summary>
@@ -35,14 +41,41 @@ namespace BankApi.Controllers
         /// возвращает все карты пользователя
         /// </summary>
         /// <returns></returns>
-        [HttpPost("ReturnCards")]
-        public ActionResult<List<CardDTO>> ReturnCards()
-        {
-           
+        [HttpGet("ReturnCards")]
+        public async Task< ActionResult<List<CardDTO>>> ReturnCards()
+        {     
             // Достает id пользоввателя из токина
             var UserId = User.Identity.GetId();
 
-            return repositoryCard.ReturnCards(UserId);
+            //return await memoryCache.GetOrCreateAsync(UserId.ToString(), async x =>
+            //{
+                return await repositoryCard.ReturnCards(UserId);
+            //});
+
+        }
+        [HttpGet("ReturnCards2")]
+        public async Task<ActionResult<List<CardDTO>>> ReturnCards2()
+        {
+            // Достает id пользоввателя из токина
+            var UserId = User.Identity.GetId();
+
+            List<CardDTO> result;
+
+            //Провнряет, есть ли катры в кэше
+            result = distributedCach.GetObject<CardDTO>(UserId.ToString());
+
+            //Если есть возвращаем
+            if (result != null)
+                return Ok(result);
+
+            //Если нет заправшиваем из базы и сохраняем в кэш
+            result = await repositoryCard.ReturnCards(UserId);
+
+            //Сохраняем в кэш, время жизни обьекта 5 минут TimeSpan.FromMinutes(5)
+            distributedCach.SetObject(UserId.ToString(), result, TimeSpan.FromMinutes(5));
+
+            return Ok(result);
+
         }
 
         /// <summary>

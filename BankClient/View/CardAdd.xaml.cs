@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BankClient.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,36 +16,13 @@ using System.Windows.Shapes;
 
 namespace BankClient
 {
-    /// <summary>
-    /// Логика взаимодействия для UserControl1.xaml
-    /// </summary>
     public partial class CardAdd : UserControl
     {
         public CardAdd()
         {
             InitializeComponent();
+            DataContext = new CardAddViewModel();
         }
-        Repository repository = new();
 
-       /// <summary>
-       /// выпуск карты
-       /// </summary>
-       /// <param name="sender"></param>
-       /// <param name="e"></param>
-        private async void btnCardAdd_Click(object sender, RoutedEventArgs e)
-        {
-            var result = await repository.CardAdd();
-            if (result.IsSuccess)
-            {
-                lbCardNumber.Content = result.Value.CardNumber;
-                lbInformation.Content = "карта успешно выпущена";
-                WindowManager.ReturnCards();
-            }
-            else
-            {
-                lbCardNumber.Content = "произошла ошибка";
-                lbInformation.Content = result.Error;
-            }
-        }
     }
 }

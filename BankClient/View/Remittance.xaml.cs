@@ -20,46 +20,46 @@ namespace BankClient
     /// </summary>
     public partial class Remittance : UserControl
     {
-        public Remittance()
-        {
-            InitializeComponent();
-        }
-        Repository repository = new();
+        //public Remittance()
+        //{
+        //    InitializeComponent();
+        //}
+        //Repository repository = new();
 
         
-        /// <summary>
-        /// пополнение баланса каарты
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private async void Remittance_Click(object sender, RoutedEventArgs e)
-        {
-            //проверка на введенное количество символов и на то чтобы введенное было число
-            if (!repository.ErrorChecking(tbFromCardNumber.Text) || !repository.ErrorChecking(tbInCardNumber.Text)  
-                || !repository.SumChecking(tbSum.Text))
-            {
-                lbInformation.Content = "Произошла ошибка. Проверьте введенные данные";
-                return;
-            }
-            var result = await repository.Remittance(tbSum.Text,repository.AddSpace(tbFromCardNumber.Text), 
-                repository.AddSpace(tbInCardNumber.Text));
+        ///// <summary>
+        ///// пополнение баланса каарты
+        ///// </summary>
+        ///// <param name="sender"></param>
+        ///// <param name="e"></param>
+        //private async void Remittance_Click(object sender, RoutedEventArgs e)
+        //{
+        //    //проверка на введенное количество символов и на то чтобы введенное было число
+        //    if (!repository.ErrorChecking(tbFromCardNumber.Text) || !repository.ErrorChecking(tbInCardNumber.Text)  
+        //        || !repository.SumChecking(tbSum.Text))
+        //    {
+        //        lbInformation.Content = "Произошла ошибка. Проверьте введенные данные";
+        //        return;
+        //    }
+        //    var result = await repository.Remittance(tbSum.Text,repository.AddSpace(tbFromCardNumber.Text), 
+        //        repository.AddSpace(tbInCardNumber.Text));
 
-                if (result.IsSuccess)
-                {
+        //        if (result.IsSuccess)
+        //        {
 
-                    lbInformation.Content = $"перевод на сумму  {tbSum.Text} прошел успешно";
-                    WindowManager.ReturnCards();
-                    tbFromCardNumber.Clear();
-                    tbInCardNumber.Clear();
-                    tbSum.Clear();
-                }
-                else
-                {
+        //            lbInformation.Content = $"перевод на сумму  {tbSum.Text} прошел успешно";
+        //            WindowManager.ReturnCards();
+        //            tbFromCardNumber.Clear();
+        //            tbInCardNumber.Clear();
+        //            tbSum.Clear();
+        //        }
+        //        else
+        //        {
 
-                    //lbInformation.Content = "Произошла ошибка. Проверьте введенные данные";
-                    lbInformation.Content = result.Error;
-                }
-        }
+        //            //lbInformation.Content = "Произошла ошибка. Проверьте введенные данные";
+        //            lbInformation.Content = result.Error;
+        //        }
+        //}
 
        
     }

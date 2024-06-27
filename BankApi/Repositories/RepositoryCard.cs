@@ -1,5 +1,6 @@
 ﻿using BankApi.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
 
 namespace BankApi.Repositories
@@ -234,11 +235,11 @@ namespace BankApi.Repositories
         /// </summary>
         /// <param name="userId"></param>
         /// <returns></returns>
-        public List<CardDTO>ReturnCards(Guid userId) 
+        public async Task<List<CardDTO>>ReturnCards(Guid userId) 
         {                 
-            return myContext.Card.Where(x => x.UserID == userId)
+           return await myContext.Card.Where(x => x.UserID == userId)
                 .Select(x=> CardDTO.FromCard(x))
-                .ToList();
+                .ToListAsync();
         }
     }
 }

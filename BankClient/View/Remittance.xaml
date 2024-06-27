@@ -217,7 +217,7 @@
                 Background="#FF330644"
                 BorderBrush="#FF20022C" 
                 BorderThickness="3,3,3,3"
-                Click="Remittance_Click" 
+               
                 Width="276"
                 Height="40"   
                 FontSize="20" />

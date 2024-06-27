@@ -206,7 +206,7 @@
         </Style>
     </UserControl.Resources>
     <Grid x:Name="Grid2" Height="451" VerticalAlignment="Center" Width="901.333">
-        <Border Background="#FF330644" BorderThickness="1" Margin="371,0,0,0"/>
+        <!--<Border Background="#FF330644" BorderThickness="1" Margin="371,0,0,0"/>
         <Button Style="{DynamicResource ButtonStyle2}" x:Name="btnCardAdd" 
                 Content="пополнить баланс" 
                 Foreground="DarkGray"
@@ -260,7 +260,7 @@
             HorizontalAlignment="Left" VerticalAlignment="Top" 
             HorizontalContentAlignment="Center" VerticalContentAlignment="Stretch" 
             FontSize="16" FontWeight="Bold" Margin="340,367,0,0" Foreground="DarkGray" Width="531" RenderTransformOrigin="0.51,0.601"/>
-        <Image HorizontalAlignment="Left" Height="81" Margin="567,27,0,0" VerticalAlignment="Top" Width="80" Source="/View/Balanse.png"/>
+        <Image HorizontalAlignment="Left" Height="81" Margin="567,27,0,0" VerticalAlignment="Top" Width="80" Source="/View/Balanse.png"/>-->
 
 
 

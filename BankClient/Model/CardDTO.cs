@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BankClient.Model
 {
-    internal class CardDTO
+    public class CardDTO
     {
         public string CardNumber { get; set; }
         public string ExpirationCard { get; set; }

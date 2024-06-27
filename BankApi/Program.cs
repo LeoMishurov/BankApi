@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using BankApi;
 using BankApi.Repositories;
+using Microsoft.Extensions.Caching.Distributed;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,11 +16,20 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+//Подключение к Redis
+// добавление кэширования
+builder.Services.AddStackExchangeRedisCache(options =>
+{
+    options.Configuration = "localhost:6379";
+    options.InstanceName = "local";
+});
+
+builder.Services.AddMemoryCache();
 
 // Получение строки подключения к бд из конфигурации 
 var connection = builder.Configuration.GetConnectionString("MyCon");
 // Настройка зависимости, добавляет при необходимости обьект MyContext
-builder.Services.AddDbContext<MyContext>(options => options.UseSqlite(connection));
+builder.Services.AddDbContext<MyContext>(options => options.UseNpgsql(connection));
 // Настройка зависимости, добавляет при необходимости обьект Repository
 builder.Services.AddScoped<RepositoryUser>();
 builder.Services.AddScoped<RepositoryCard>();

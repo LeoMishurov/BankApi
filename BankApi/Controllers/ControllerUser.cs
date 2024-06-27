@@ -24,7 +24,7 @@ namespace BankApi.Controllers
             this.repositoryUser = repositoryUser;
         }
 
-        [HttpPost("token")]
+        [HttpGet("token")]
         public IActionResult Token(string username, string password)
         {
             var identity = GetIdentity(username, password);

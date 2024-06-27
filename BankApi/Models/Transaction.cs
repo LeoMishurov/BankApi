@@ -12,9 +12,9 @@
 
         public string CardNumber { get; set; }
 
-        public DateTime Date { get; set; } = DateTime.Now.Date;
+        public DateTime Date { get; set; } = DateTime.UtcNow.AddYears(1).Date.AddHours(DateTime.UtcNow.Hour).AddMinutes(DateTime.UtcNow.Minute);
 
-        // Сылка на User для enti framevork
+        // Сылка на User для EF
         public User User { get; set; }
     }
 }

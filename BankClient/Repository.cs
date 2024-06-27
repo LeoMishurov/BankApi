@@ -13,7 +13,7 @@ using Newtonsoft.Json;
 
 namespace BankClient
 {
-    internal class Repository
+    public class Repository
     {
         //переменная для записи токена
         //private static string Token;
@@ -71,8 +71,7 @@ namespace BankClient
         {
             /// using закрывает поток после выполнения задачи
             using var client = GetClient();
-            var response = await client.PostAsync($"api/User/token?username={login}&password={password}",
-                null);
+            var response = await client.GetAsync($"api/User/token?username={login}&password={password}");
 
             if (response.IsSuccessStatusCode)
             {
@@ -147,7 +146,7 @@ namespace BankClient
         /// <returns></returns>
         public async Task<Result<List<CardDTO>>> ReturnCards()
         {
-            return await CallPost<List<CardDTO>>("api/Card/ReturnCards");
+            return await CallGet<List<CardDTO>>("api/Card/ReturnCards");
         }
 
         /// <summary>
@@ -181,6 +180,17 @@ namespace BankClient
             /// using закрывает поток после выполнения задачи
             using var client = GetClient();
             var response = await client.PostAsync(url, null);
+
+            if (response.IsSuccessStatusCode)
+                return Result.Ok(await response.Content.ReadFromJsonAsync<T>());
+            return Result.Fail<T>(await response.Content.ReadAsStringAsync());
+        }
+
+        private async Task<Result<T>> CallGet<T>(string url)
+        {
+            /// using закрывает поток после выполнения задачи
+            using var client = GetClient();
+            var response = await client.GetAsync(url);
 
             if (response.IsSuccessStatusCode)
                 return Result.Ok(await response.Content.ReadFromJsonAsync<T>());

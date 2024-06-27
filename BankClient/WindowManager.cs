@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using BankClient.Model;
+using System.Collections.ObjectModel;
 using System.Windows.Controls;
 
 namespace BankClient
@@ -10,16 +7,38 @@ namespace BankClient
     public static class WindowManager
     {
 
-      public static  MainWindow mainWindow;
+       public static  MainWindow mainWindow;
 
         /// <summary>
         /// закрывает окно
         /// </summary>
         public static void CloseWindow()
-            
-        {         
+
+        {
             mainWindow.CloseWindow();
         }
+
+        //Возвращает список карт пользователя,
+        //вызывается автоматически при загрузке Xaml Main.
+        //биндится к listBox 
+        public static ObservableCollection<CardDTO> ReturnCards()
+        {
+           Repository repository = new();
+
+           var result = repository.ReturnCards().Result.Value;
+
+            ObservableCollection<CardDTO> LbCards = new();
+
+                LbCards.Clear();
+
+                foreach (CardDTO cardDTO in result)
+                {
+                    LbCards.Add(cardDTO);
+                }
+
+            return LbCards;
+        }
+
         /// <summary>
         /// закрывает окно и открывает преданное 
         /// </summary>
@@ -31,19 +50,13 @@ namespace BankClient
         }
 
         /// <summary>
-        /// загрузка списка карт пользователя в lbCards
+        /// закрывает главное окно и открывает преданное 
         /// </summary>
-        public static void ReturnCards() 
-        {
-            mainWindow.ReturnCards();
-        }
+        /// <param name="control"></param>
+        public static void ShowWindowMain(UserControl control)
 
-        /// <summary>
-        /// разблокировка кнопок после авторизации
-        /// </summary>
-        public static void UnlockButtons() 
         {
-            mainWindow.UnlockButtons();
+            mainWindow.ShowWindowMain(control);
         }
     }
 }

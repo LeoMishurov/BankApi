@@ -1,0 +1,101 @@
+﻿<UserControl x:Class="BankClient.View.Main"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BankClient.View"
+        xmlns:vm="clr-namespace:BankClient.ViewModel"
+        xmlns:BankClient="clr-namespace:BankClient"
+        d:DataContext="{d:DesignInstance Type=vm:MainViewModel,IsDesignTimeCreatable=True}"
+        mc:Ignorable="d"
+>
+    <UserControl.Resources>
+        <ObjectDataProvider x:Key="AsyncDataSource" 
+            IsAsynchronous="True"
+          
+              ObjectType="BankClient:WindowManager"
+        
+            MethodName="ReturnCards" />
+
+        <ResourceDictionary x:Key="SourceStyles" Source="Styles.xaml"/>
+    </UserControl.Resources>
+
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="33"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" Grid.Row="0">
+                <Button  Content="главная" FontSize="15" Width="150" Background="Yellow" FontWeight="Bold" Command="{Binding main_Click}"/>
+                <Button  Content="выпустить карту" FontSize="15" Width="150"  Background="Yellow" FontWeight="Bold" Command="{Binding btnCardAdd_Click}"/>
+                <Button  Content="пополнить баланс" FontSize="15" Width="150" Background="Yellow" FontWeight="Bold"  IsEnabled="False"/>
+                <Button  Content="блок/разблок" FontSize="15" Width="150" Background="Yellow" FontWeight="Bold"  IsEnabled="False"/>
+                <Button  Content="дневной лимит" FontSize="15" Width="150" Background="Yellow" FontWeight="Bold"  IsEnabled="False"/>
+                <Button  Content="оплата" FontSize="15" Width="150" Background="Yellow" FontWeight="Bold"  IsEnabled="False"/>
+                <Button  Content="перевод" FontSize="15" Width="150" Background="Yellow" FontWeight="Bold"  IsEnabled="False"/>
+                <Button  Content="выход" FontSize="15" Width="150" Background="Yellow" FontWeight="Bold" Command="{Binding back_Click}"/>
+        </StackPanel >
+ 
+        <Grid x:Name="Grid0"  Background="#FF330644" Grid.Row="1">
+            <Grid HorizontalAlignment="Left" Width="361">
+
+                <Canvas Grid.Row="0" Margin="0,0,0,240" Grid.RowSpan="2" >
+                    <Label Content="ваши карты" HorizontalAlignment="Left" Margin="164,112,0,0" 
+                        VerticalAlignment="Top" Width="138" FontSize="20" FontWeight="Bold" Foreground="DarkGray"/>
+
+                    <Image HorizontalAlignment="Left" Height="86" Margin="50,54,0,0" 
+                        VerticalAlignment="Top" Width="82" Source="/Resources/Image/User.png" />
+
+                    <Label x:Name="lbUser" Content="{Binding Login}" HorizontalAlignment="Left" Margin="164,66,0,0" 
+                        VerticalAlignment="Top" Width="157" FontSize="30" FontWeight="Bold" Foreground="DarkGray"
+                        HorizontalContentAlignment="Left"/>
+                </Canvas>
+                
+                <DockPanel Margin="0,153,0,0">
+                    <ListBox x:Name="lbCards"   ItemsSource="{Binding Source={StaticResource AsyncDataSource}, IsAsync=True}"  ScrollViewer.CanContentScroll="True" Background="AliceBlue" Margin="10,10" VerticalAlignment="Stretch">
+                        <ListBox.ItemTemplate>
+
+                            <DataTemplate>
+
+                                <StackPanel Orientation="Vertical">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="номер карты       " FontWeight="Bold" FontSize="14" Foreground="Blue"/>
+                                        <TextBox Text="{Binding CardNumber}" FontWeight="Bold" IsReadOnly="True"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="баланс" FontWeight="Bold" FontSize="14" Width="120"/>
+                                        <TextBlock Text="{Binding Balance}" FontWeight="Bold" Width="130" TextAlignment="Center"   />
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="дневной лимит     " FontWeight="Bold" FontSize="14" Width="120"/>
+                                        <TextBlock Text="{Binding DailyLimit}" FontWeight="Bold" Width="130" TextAlignment="Center"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="срок действия        " FontWeight="Bold" FontSize="14" Width="120"/>
+                                        <TextBlock Text="{Binding ExpirationCard}" FontWeight="Bold" Width="130" TextAlignment="Center"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="активность        " FontWeight="Bold" FontSize="14" Width="120"/>
+                                        <TextBlock Text="{Binding IsActive}" FontWeight="Bold" Width="130" TextAlignment="Center"/>
+                                    </StackPanel>
+                                </StackPanel>
+
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </DockPanel>
+            </Grid>
+
+            <Viewbox>
+                <DockPanel  Width="839" Margin="382,0,0,0">
+                    <Label Content="С НАМИ ВОЗМОЖНО ВСЕ" 
+                    HorizontalAlignment="Center" FontSize="35" FontWeight="Bold" Foreground="DarkGray"
+                    HorizontalContentAlignment="Center" DockPanel.Dock="Top" Height="50"/>
+                    <Image Source="/Resources/Image/Main.png" Margin="13,0,0,0" Height="364" Width="570"/>
+                </DockPanel>
+            </Viewbox>
+        </Grid>
+
+    </Grid>
+
+</UserControl>
