@@ -17,7 +17,7 @@
         
             MethodName="ReturnCards" />
 
-        <ResourceDictionary x:Key="SourceStyles" Source="Styles.xaml"/>
+        <ResourceDictionary x:Key="Styles" Source="Styles.xaml"/>
     </UserControl.Resources>
 
     <Grid >

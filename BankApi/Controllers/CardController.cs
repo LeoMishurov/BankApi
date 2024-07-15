@@ -1,7 +1,7 @@
 ﻿using BankApi.Models;
 using BankApi.Repositories;
+using BankApi.Services;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Caching.Memory;
@@ -17,10 +17,12 @@ namespace BankApi.Controllers
         private readonly RepositoryCard repositoryCard;
         private readonly IDistributedCache distributedCach;
         private readonly IMemoryCache memoryCache;
+        private readonly ServicesCard servicesCard;
 
-        public CardController(RepositoryCard repositoryCard, IDistributedCache distributedCach, IMemoryCache memoryCache)
+        public CardController(RepositoryCard repositoryCard, IDistributedCache distributedCach, IMemoryCache memoryCache, ServicesCard cardServices)
         {
             this.repositoryCard = repositoryCard;
+            this.servicesCard = cardServices;
             this.distributedCach = distributedCach;
             this.memoryCache = memoryCache;
         }
@@ -35,8 +37,9 @@ namespace BankApi.Controllers
             // Достает id пользоввателя из токина
             var userId = User.Identity.GetId();
 
-            return CardDTO.FromCard(repositoryCard.CardAdd(userId));
+            return CardDTO.FromCard(servicesCard.CardAdd(userId));
         }
+
         /// <summary>
         /// возвращает все карты пользователя
         /// </summary>
@@ -51,31 +54,6 @@ namespace BankApi.Controllers
             //{
                 return await repositoryCard.ReturnCards(UserId);
             //});
-
-        }
-        [HttpGet("ReturnCards2")]
-        public async Task<ActionResult<List<CardDTO>>> ReturnCards2()
-        {
-            // Достает id пользоввателя из токина
-            var UserId = User.Identity.GetId();
-
-            List<CardDTO> result;
-
-            //Провнряет, есть ли катры в кэше
-            result = distributedCach.GetObject<CardDTO>(UserId.ToString());
-
-            //Если есть возвращаем
-            if (result != null)
-                return Ok(result);
-
-            //Если нет заправшиваем из базы и сохраняем в кэш
-            result = await repositoryCard.ReturnCards(UserId);
-
-            //Сохраняем в кэш, время жизни обьекта 5 минут TimeSpan.FromMinutes(5)
-            distributedCach.SetObject(UserId.ToString(), result, TimeSpan.FromMinutes(5));
-
-            return Ok(result);
-
         }
 
         /// <summary>
@@ -88,9 +66,9 @@ namespace BankApi.Controllers
         public ActionResult<String> Balance(int sum, string cardNumber)
         {
             // Достает id пользоввателя из токина
-            var UserId = User.Identity.GetId();
+            var userId = User.Identity.GetId();
 
-            return repositoryCard.Balance(sum, cardNumber, UserId);
+            return servicesCard.Balance(sum, cardNumber, userId);
         }
 
         /// <summary>
@@ -104,7 +82,7 @@ namespace BankApi.Controllers
             // Достает id пользоввателя из токина
             var UserId = User.Identity.GetId();
 
-            return repositoryCard.BlockCard(cardNumber, UserId);
+            return servicesCard.BlockCard(cardNumber, UserId);
         }
 
         /// <summary>
@@ -118,7 +96,7 @@ namespace BankApi.Controllers
             // Достает id пользоввателя из токина
             var UserId = User.Identity.GetId();
 
-            return repositoryCard.UnBlockCard(cardNumber, UserId);
+            return servicesCard.UnBlockCard(cardNumber, UserId);
         }
 
         /// <summary>
@@ -133,7 +111,7 @@ namespace BankApi.Controllers
             // Достает id пользоввателя из токина
             var UserId = User.Identity.GetId();
 
-            return repositoryCard.DailyLimit(cardNumber, UserId, sum);           
+            return servicesCard.DailyLimit(cardNumber, UserId, sum);           
         }
 
         /// <summary>
@@ -148,7 +126,7 @@ namespace BankApi.Controllers
             // Достает id пользоввателя из токина
             var UserId = User.Identity.GetId();
 
-            var error = repositoryCard.Pay(UserId, sum, cardNumber);
+            var error = servicesCard.Pay(UserId, sum, cardNumber);
 
             if (string.IsNullOrEmpty(error))
                 return Ok();
@@ -169,7 +147,7 @@ namespace BankApi.Controllers
             // Достает id пользоввателя из токина
             var UserId = User.Identity.GetId();
 
-            var error = repositoryCard.Remittance(UserId, sum, fromCardNumber, inCardNumber);
+            var error = servicesCard.Remittance(UserId, sum, fromCardNumber, inCardNumber);
 
             if (string.IsNullOrEmpty(error))
                 return Ok();

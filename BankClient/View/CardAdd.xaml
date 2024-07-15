@@ -17,7 +17,7 @@
                     />
                 <Label Style="{DynamicResource LablStyle}" 
                     Content="{Binding LbInformation}"
-                    Margin="20,0"
+                    Margin="15,0"
                     HorizontalContentAlignment="Center"           
                     VerticalContentAlignment="Center" 
                     MinHeight="50"
@@ -25,7 +25,7 @@
                     />
                 <Label Style="{DynamicResource LablStyle}" 
                     Content="{Binding LbCardNumber}"
-                    Margin="20,20"  
+                    Margin="0,20,0,10"  
                     HorizontalAlignment="Stretch"               
                     HorizontalContentAlignment="Center"
                     Height="50" 
@@ -38,7 +38,7 @@
                     HorizontalAlignment="Center"
                     VerticalAlignment="Bottom"
                     Width="276" 
-                    Margin="0,30,0,40"
+                    Margin="0,25,0,100"
                     />
             </StackPanel>
         </Viewbox>

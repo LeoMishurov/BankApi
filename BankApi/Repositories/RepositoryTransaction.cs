@@ -6,9 +6,9 @@ namespace BankApi.Repositories
     {
         MyContext myContext = new();
 
-        public RepositoryTransaction(MyContext myContext)
+        public RepositoryTransaction(MyContext context)
         {
-            this.myContext = myContext;
+            this.myContext = context;
         }
 
         public RepositoryTransaction()

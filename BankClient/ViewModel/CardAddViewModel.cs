@@ -1,15 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using BankClient.View;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using BankClient.Model;
-using System.Collections.ObjectModel;
-using System.Windows;
 using System.Windows.Input;
-using BankClient.View;
-using System.Windows.Controls;
 
 namespace BankClient.ViewModel
 {

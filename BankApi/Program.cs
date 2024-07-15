@@ -5,6 +5,7 @@ using Microsoft.IdentityModel.Tokens;
 using BankApi;
 using BankApi.Repositories;
 using Microsoft.Extensions.Caching.Distributed;
+using BankApi.Services;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -33,7 +34,8 @@ builder.Services.AddDbContext<MyContext>(options => options.UseNpgsql(connection
 // Настройка зависимости, добавляет при необходимости обьект Repository
 builder.Services.AddScoped<RepositoryUser>();
 builder.Services.AddScoped<RepositoryCard>();
-
+builder.Services.AddScoped<RepositoryTransaction>();
+builder.Services.AddScoped<ServicesCard>();
 
 // Настройки для работы с JWT токенами
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -60,8 +62,6 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                             ValidateIssuerSigningKey = true,
                         };
                     });
-
-
 
 var app = builder.Build();
 // Configure the HTTP request pipeline.
