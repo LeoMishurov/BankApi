@@ -10,8 +10,8 @@ namespace BankApi.Repositories
             this.myContext = context;
         }
 
-        MyContext myContext = new();
-        RepositoryTransaction repositoryTransaction = new();
+        MyContext myContext =new();
+       // RepositoryTransaction repositoryTransaction;
 
         /// <summary>
         /// создание новой карты
