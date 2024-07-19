@@ -18,11 +18,11 @@
 ## Технология
 - .NET 6
 - Entity Framework
-- База данных SQLight
-- Клиент на WPF
+- База данных Postgres
+- Клиент на WPF MVVM
 
 ## Обзор проекта
-- BankAPI – содержит методы api банковского приложения 
+- BankAPI – содержит методы api банковского приложения
 - BankClient – визуальный интерфейс, использующий BankAPI
 
 ![1](https://user-images.githubusercontent.com/93088323/188942875-5732ec32-c0d9-4111-a14c-b572d23803ee.jpg)
