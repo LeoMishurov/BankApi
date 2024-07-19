@@ -4,14 +4,15 @@ using Microsoft.EntityFrameworkCore;
 namespace BankApi.Repositories
 {
     public class RepositoryCard 
-    {   
-        public RepositoryCard(MyContext context)
+    {
+        public RepositoryCard(MyContext context, RepositoryTransaction repositoryTransaction)
         {
             this.myContext = context;
+            this.repositoryTransaction = repositoryTransaction;
         }
 
-        MyContext myContext =new();
-       // RepositoryTransaction repositoryTransaction;
+        MyContext myContext;
+        RepositoryTransaction repositoryTransaction;
 
         /// <summary>
         /// создание новой карты

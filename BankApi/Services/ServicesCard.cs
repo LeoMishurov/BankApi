@@ -173,7 +173,7 @@ namespace BankApi.Services
                 // Сохранение транзакции в бд
                 repositoryTransaction.TransactionsPay(userId, sum, cardNumber);
 
-                return "оплата прошла успешно";
+                return "";
             }
 
         }
@@ -218,7 +218,7 @@ namespace BankApi.Services
                 // Сохранение транзакции в бд
                 repositoryTransaction.TransactionsReceipts(userId, sum, inCardNumber);
 
-                return "перевод прошел успешно";
+                return "";
             }
         }
     }

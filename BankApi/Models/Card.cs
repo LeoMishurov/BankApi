@@ -6,7 +6,7 @@
 
         public Guid UserID { get; set; }
         public string CardNumber { get; set; }
-        public DateTime ExpirationCard { get; set; } = DateTime.UtcNow.AddYears(1).Date.AddHours(DateTime.UtcNow.Hour).AddMinutes(DateTime.UtcNow.Minute);
+        public DateTime ExpirationCard { get; set; } = DateTime.UtcNow.Date;
         public decimal Balance { get; set; }
         public decimal DailyLimit { get; set; }
         public bool IsActive { get; set; }

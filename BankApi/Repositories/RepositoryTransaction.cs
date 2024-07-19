@@ -4,15 +4,11 @@ namespace BankApi.Repositories
 {
     public class RepositoryTransaction
     {
-        MyContext myContext = new();
+        MyContext myContext;
 
         public RepositoryTransaction(MyContext context)
         {
             this.myContext = context;
-        }
-
-        public RepositoryTransaction()
-        {
         }
 
         /// <summary>
@@ -59,12 +55,11 @@ namespace BankApi.Repositories
         /// </summary>
         /// <param name="userId"></param>
         /// <returns></returns>
-        public int GetTransactions(string cardNamber)
+        public int GetTransactions(string cardNumber)
         {
             return myContext.Transaction
-             .Where(x => x.Date == DateTime.Now.Date && x.CardNumber == cardNamber)
+             .Where(x => x.Date == DateTime.UtcNow.Date && x.CardNumber == cardNumber)
              .Sum(x => x.SumPay);
-
         }
     }
 }

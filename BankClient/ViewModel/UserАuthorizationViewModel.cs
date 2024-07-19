@@ -6,12 +6,7 @@ using System.Windows.Input;
 namespace BankClient.ViewModel
 {
     public class UserАuthorizationViewModel : INotifyPropertyChanged
-    {
-        public UserАuthorizationViewModel() // Убрать после теста!!!
-        {
-            TbLogin = "leo";
-            TbPassword = "123";
-        }
+    {    
         public event PropertyChangedEventHandler PropertyChanged;
 
         Repository repository = new();

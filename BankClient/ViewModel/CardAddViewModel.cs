@@ -12,12 +12,6 @@ namespace BankClient.ViewModel
         public string LbCardNumber { get; set; }
         public string LbInformation { get; set; }
 
-        public CardAddViewModel() // После теста убрать!
-        {
-            LbCardNumber = "8888-8888-8888-8888";
-            LbInformation = "карта успешно выпущена";
-        }
-
         /// <summary>
         /// выпуск карты
         /// </summary>

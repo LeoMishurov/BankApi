@@ -12,7 +12,7 @@
 
         public string CardNumber { get; set; }
 
-        public DateTime Date { get; set; } = DateTime.UtcNow.AddYears(1).Date.AddHours(DateTime.UtcNow.Hour).AddMinutes(DateTime.UtcNow.Minute);
+        public DateTime Date { get; set; } = DateTime.UtcNow.Date;
 
         // Сылка на User для EF
         public User User { get; set; }

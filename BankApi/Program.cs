@@ -1,31 +1,17 @@
+using BankApi;
 using BankApi.Models;
+using BankApi.Repositories;
+using BankApi.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
-using BankApi;
-using BankApi.Repositories;
-using Microsoft.Extensions.Caching.Distributed;
-using BankApi.Services;
-
 
 var builder = WebApplication.CreateBuilder(args);
-
-// Add services to the container.
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
-//Подключение к Redis
-// добавление кэширования
-builder.Services.AddStackExchangeRedisCache(options =>
-{
-    options.Configuration = "localhost:6379";
-    options.InstanceName = "local";
-});
-
-builder.Services.AddMemoryCache();
 
 // Получение строки подключения к бд из конфигурации 
 var connection = builder.Configuration.GetConnectionString("MyCon");

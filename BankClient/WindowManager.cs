@@ -23,18 +23,18 @@ namespace BankClient
         //биндится к listBox 
         public static ObservableCollection<CardDTO> ReturnCards()
         {
-           Repository repository = new();
+            Repository repository = new();
 
-           var result = repository.ReturnCards().Result.Value;
+            var result = repository.ReturnCards().Result.Value;
 
             ObservableCollection<CardDTO> LbCards = new();
 
-                LbCards.Clear();
+            LbCards.Clear();
 
-                foreach (CardDTO cardDTO in result)
-                {
-                    LbCards.Add(cardDTO);
-                }
+            foreach (CardDTO cardDTO in result)
+            {
+                LbCards.Add(cardDTO);
+            }
 
             return LbCards;
         }

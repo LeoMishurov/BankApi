@@ -15,16 +15,11 @@ namespace BankApi.Controllers
     public class CardController : ControllerBase
     {
         private readonly RepositoryCard repositoryCard;
-        private readonly IDistributedCache distributedCach;
-        private readonly IMemoryCache memoryCache;
         private readonly ServicesCard servicesCard;
-
-        public CardController(RepositoryCard repositoryCard, IDistributedCache distributedCach, IMemoryCache memoryCache, ServicesCard cardServices)
+        public CardController(RepositoryCard repositoryCard, ServicesCard cardServices)
         {
             this.repositoryCard = repositoryCard;
             this.servicesCard = cardServices;
-            this.distributedCach = distributedCach;
-            this.memoryCache = memoryCache;
         }
 
         /// <summary>

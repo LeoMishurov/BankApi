@@ -25,14 +25,14 @@
             <RowDefinition Height="33"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <StackPanel Orientation="Horizontal" Grid.Row="0">
+        <StackPanel Orientation="Horizontal" Grid.Row="0" HorizontalAlignment="Center">
                 <Button  Content="главная" FontSize="15" Width="150" Background="Yellow" FontWeight="Bold" Command="{Binding main_Click}"/>
                 <Button  Content="выпустить карту" FontSize="15" Width="150"  Background="Yellow" FontWeight="Bold" Command="{Binding btnCardAdd_Click}"/>
-                <Button  Content="пополнить баланс" FontSize="15" Width="150" Background="Yellow" FontWeight="Bold"  IsEnabled="False"/>
-                <Button  Content="блок/разблок" FontSize="15" Width="150" Background="Yellow" FontWeight="Bold"  IsEnabled="False"/>
-                <Button  Content="дневной лимит" FontSize="15" Width="150" Background="Yellow" FontWeight="Bold"  IsEnabled="False"/>
-                <Button  Content="оплата" FontSize="15" Width="150" Background="Yellow" FontWeight="Bold"  IsEnabled="False"/>
-                <Button  Content="перевод" FontSize="15" Width="150" Background="Yellow" FontWeight="Bold"  IsEnabled="False"/>
+                <Button  Content="пополнить баланс" FontSize="15" Width="150" Background="Yellow" FontWeight="Bold"  Command="{Binding btnBalanceAdd_Click}"/>
+                <Button  Content="блок/разблок" FontSize="15" Width="150" Background="Yellow" FontWeight="Bold"  Command="{Binding btnBlock_Click}"/>
+                <Button  Content="дневной лимит" FontSize="15" Width="150" Background="Yellow" FontWeight="Bold"  Command="{Binding DailyLimit_Click}"/>
+                <Button  Content="оплата" FontSize="15" Width="150" Background="Yellow" FontWeight="Bold"  Command="{Binding Pay_Click}"/>
+                <Button  Content="перевод" FontSize="15" Width="150" Background="Yellow" FontWeight="Bold"  Command="{Binding Remittance_Click}"/>
                 <Button  Content="выход" FontSize="15" Width="150" Background="Yellow" FontWeight="Bold" Command="{Binding back_Click}"/>
         </StackPanel >
  
@@ -86,13 +86,13 @@
                 </DockPanel>
             </Grid>
 
-            <Viewbox>
-                <DockPanel  Width="839" Margin="382,0,0,0">
-                    <Label Content="С НАМИ ВОЗМОЖНО ВСЕ" 
+            <Viewbox Margin="382,0,0,0">
+                <StackPanel  Width="839">
+                    <Label Content="С НАМИ ВОЗМОЖНО ВСЕ !!!" 
                     HorizontalAlignment="Center" FontSize="35" FontWeight="Bold" Foreground="DarkGray"
                     HorizontalContentAlignment="Center" DockPanel.Dock="Top" Height="50"/>
-                    <Image Source="/Resources/Image/Main.png" Margin="13,0,0,0" Height="364" Width="570"/>
-                </DockPanel>
+                    <Image Source="/Resources/Image/Main.png" Margin="13,0,0,0" Height="364" Width="570" HorizontalAlignment="Center" DockPanel.Dock="Top"/>
+                </StackPanel>
             </Viewbox>
         </Grid>
 

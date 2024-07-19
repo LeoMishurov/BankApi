@@ -12,8 +12,8 @@
 
     <Grid Background="#FF330644" MinHeight="567" MinWidth="839" >
         <Viewbox>
-            <StackPanel VerticalAlignment="Center">
-                <Image HorizontalAlignment="Center" Height="179"  VerticalAlignment="Top" Width="244" Source="/Resources/Image/CardAdd.png" Margin="0,20,0,0" 
+            <StackPanel VerticalAlignment="Center" MinHeight="567">
+                <Image HorizontalAlignment="Center" Height="179" Width="244" Source="/Resources/Image/CardAdd.png" Margin="0,30,0,0" 
                     />
                 <Label Style="{DynamicResource LablStyle}" 
                     Content="{Binding LbInformation}"
@@ -38,7 +38,7 @@
                     HorizontalAlignment="Center"
                     VerticalAlignment="Bottom"
                     Width="276" 
-                    Margin="0,25,0,100"
+                    Margin="0,30,0,0"
                     />
             </StackPanel>
         </Viewbox>

@@ -29,6 +29,15 @@ namespace BankClient.ViewModel
         });
 
         /// <summary>
+        /// запускает окно "пополнить баланс карты"
+        /// </summary>
+        public ICommand btnBalanceAdd_Click => new SimpleCommand(() =>
+        {
+            BalanceAdd balanceAdd = new();
+            WindowManager.ShowWindow(balanceAdd);
+        });
+
+        /// <summary>
         /// запускает окно блокировки карты
         /// </summary>
         public ICommand btnBlock_Click => new SimpleCommand(() =>
