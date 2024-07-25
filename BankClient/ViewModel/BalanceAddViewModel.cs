@@ -30,7 +30,7 @@ namespace BankClient.ViewModel
 
             if (result.IsSuccess)
             {
-                LbInformation = $"баланс карты {TbCardNumber} попполнен на {TbSum}";
+                LbInformation = $"баланс карты {TbCardNumber} пополнен на {TbSum}";
 
                 // Обновление окна с картами и пользователем
                 Main main = new();

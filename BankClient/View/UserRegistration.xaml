@@ -37,7 +37,7 @@
                  Height="33" 
                  Width="276"              
                  />
-        <Button Style="{DynamicResource ButtonStyle}" Content="зарегстрироваться" 
+        <Button Style="{DynamicResource ButtonStyle}" Content="зарегистрироваться" 
                 Margin="312,271,313,0" 
                 Command="{Binding btnRegistr_Click}"              
                 FontSize="20" 

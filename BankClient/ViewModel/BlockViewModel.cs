@@ -62,7 +62,7 @@ namespace BankClient.ViewModel
 
                 if (result.IsSuccess)
                 {
-                    lbInformation = $"карта {tbCardNumber} разблоктрована";
+                    lbInformation = $"карта {tbCardNumber} разблокирована";
 
                     // Обновление окна с картами и пользователем
                     Main main = new();

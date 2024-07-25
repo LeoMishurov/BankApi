@@ -18,7 +18,7 @@ namespace BankClient.ViewModel
         /// </summary>
         public ICommand btnRegistr_Click => new SimpleCommand(async() =>
         {
-            if (TbLogin != "" && TbPassword != "")
+            if (TbLogin != null && TbPassword != null)
             {
                 await repository.Registration(TbLogin, TbPassword);
                 await repository.Authorization(TbLogin, TbPassword);
